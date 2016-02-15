@@ -1,0 +1,29 @@
+.menu {
+    left : 20%;
+    position: absolute;
+    width : 15%;
+}
+
+.mainContent {
+    left : 35%;
+    position: relative;
+    width : 65%;
+    background-color: lightseagreen;
+}
+
+.statdiv {
+    color: limegreen;
+    position: absolute;
+    width : 30%;
+}
+
+.back {
+    background : image("resources/images/background/back1.jpg");
+}
+
+.centerLogin {
+    position: relative;
+    left : 20%;
+    margin-top : 5%;
+    width : 30%;
+}

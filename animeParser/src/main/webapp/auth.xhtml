@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Main Page</title>
+    <link href="resources/css/mainPage.css" rel="stylesheet"/>
+</h:head>
+<h:body style="background: url(resources/images/background/back4.jpg); background-size:cover; background-attachment: fixed;">
+    <div class="centerLogin">
+        <h:form id="myform">
+            <p:growl id="growl" showDetail="true" life="3000"/>
+
+            <p>Login</p>
+            <p:inputText id="login" value="#{authBean.user.login}" required="true" requiredMessage="Login required">
+
+            </p:inputText>
+
+            <p>Password</p>
+            <p:password id="pass" value="#{authBean.user.password}" required="true" requiredMessage="Password required">
+            </p:password>
+
+            <p>
+                <p:commandButton value="Login" action="#{authBean.doLogin}" ajax="false" style="width : 240px">
+
+                </p:commandButton>
+            </p>
+        </h:form>
+    </div>
+</h:body>
+</html>
