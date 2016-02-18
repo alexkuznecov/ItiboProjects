@@ -5,6 +5,7 @@ import domain.SearchObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import service.AnimeService;
 import service.SearchService;
@@ -18,6 +19,7 @@ import java.io.IOException;
 
 @Component(value = "searchUpd")
 @SessionScoped
+@Lazy
 public class SearchUpdate {
 
     private static final Logger LOG = LoggerFactory.getLogger(SearchUpdate.class);
@@ -37,6 +39,7 @@ public class SearchUpdate {
     public AnimeVostParser animeVostParser;
 
     public SearchUpdate() {
+        LOG.info("SearchUpdate created");
         animeVostParser = new AnimeVostParser();
     }
 

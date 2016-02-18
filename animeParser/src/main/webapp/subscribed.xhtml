@@ -9,14 +9,40 @@
     <title>Subscribed Anime</title>
     <link href="resources/css/mainPage.css" rel="stylesheet"/>
 </h:head>
-<h:body style="background: url(resources/images/background/back5.jpeg); background-size:cover; background-attachment: fixed;">
+<h:body>
     <div class="statdiv">
         <p:dock position="top" halign="center" itemWidth="50" maxWidth="60" proximity="90">
-            <p:menuitem value="Home" icon="resources/images/menu/home.ico" url="/main.xhtml" />
-            <p:menuitem value="Profile" icon="resources/images/menu/profile.ico" url="#" />
-            <p:menuitem value="Subscribe" icon="resources/images/menu/subscribe.ico" url="/subscribed.xhtml" />
-            <p:menuitem value="Updates" icon="resources/images/menu/updates.ico" url="/search.xhtml" />
+            <p:menuitem value="Home" icon="resources/images/menu/home.ico" url="/main.xhtml"/>
+            <p:menuitem value="Profile" icon="resources/images/menu/profile.ico" url="#"/>
+            <p:menuitem value="Subscribe" icon="resources/images/menu/subscribe.ico" url="/subscribed.xhtml"/>
+            <p:menuitem value="Updates" icon="resources/images/menu/updates.ico" url="/search.xhtml"/>
         </p:dock>
     </div>
+
+    <div id="mainContent" class="mainContent">
+        <h:form id="subscribedAnimeForm">
+            <p:growl id="growl" showDetail="true" life="3000"/>
+            <p:dataTable var="anime" value="#{subscriber.subscribedAnime}">
+
+                <p:column headerText="Name">
+                    <h:outputText value="#{anime.name}"/>
+                </p:column>
+
+                <p:column headerText="Publication Date">
+                    <h:outputText value="#{anime.publicationDate}"/>
+                </p:column>
+
+                <p:column headerText="Site">
+                    <h:commandLink action="#{subscriber.goToSite(anime.site)}" value="#{anime.site}">
+
+                    </h:commandLink>
+                </p:column>
+
+            </p:dataTable>
+
+        </h:form>
+    </div>
+
+
 </h:body>
 </html>

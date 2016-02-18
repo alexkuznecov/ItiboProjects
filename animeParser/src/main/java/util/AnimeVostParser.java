@@ -84,8 +84,8 @@ public class AnimeVostParser {
                 List<Element> elements1 = elements.get(i).getElementsByClass("shortstoryHead");
                 List<Element> elements2 = elements.get(i).getElementsByClass("staticInfoLeftData");
 
-
                 String bufNameCompl = elements1.get(0).text();
+                List<Element> elementsForName = elements1.get(0).getElementsByTag("a");
                 String bufDateCompl = elements2.get(0).text();
 
                 String[] list = bufDateCompl.split(" ");
@@ -103,7 +103,8 @@ public class AnimeVostParser {
                     parsedAnime.setNewSeries(list2[0]);
                 }
 
-                parsedAnime.setSite("http://animevost.org");
+                String hrefAttr = elementsForName.get(0).attr("href");
+                parsedAnime.setSite(hrefAttr);
                 LOG.info(parsedAnime.getName() + " " + parsedAnime.getNewSeries() + " " + parsedAnime.getPublicationDate());
 
                 if (parsedAnime.getName().equals(name) && parsedAnime.getPublicationDate().equals(lastUpdateDate)) {

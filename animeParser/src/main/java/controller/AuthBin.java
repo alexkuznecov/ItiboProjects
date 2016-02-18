@@ -24,6 +24,7 @@ public class AuthBin {
     private User user;
 
     public AuthBin() {
+        LOG.info("AuthBin created");
        user = new User();
     }
 
