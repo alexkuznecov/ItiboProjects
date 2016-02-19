@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="CONSOLE_APPENDER" target="SYSTEM_OUT">
+            <PatternLayout pattern="%c{1.}:%line [%p] %u %m%n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="com.project" level="DEBUG" additivity="false">
+            <Appender-ref ref="CONSOLE_APPENDER"/>
+        </Logger>
+
+        <Root level="INFO">
+            <Appender-ref ref="CONSOLE_APPENDER"/>
+        </Root>
+    </Loggers>
+</Configuration>
