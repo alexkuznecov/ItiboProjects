@@ -41,7 +41,4 @@ public class SubscriberBean {
         this.subscribedAnime = subscribedAnime;
     }
 
-    public String goToSite(String url) {
-        return url;
-    }
 }
