@@ -23,6 +23,11 @@
             <property name="sqlSessionFactory" ref="sqlSessionFactory" />
         </bean>
 
+        <bean id="searchService" class="org.mybatis.spring.mapper.MapperFactoryBean">
+            <property name="mapperInterface" value="by.services.SearchService" />
+            <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        </bean>
+
         <bean id="propertyConfigurer"
               class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
             <property name="location">

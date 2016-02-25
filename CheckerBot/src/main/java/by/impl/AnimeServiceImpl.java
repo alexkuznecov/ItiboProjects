@@ -1,7 +1,6 @@
 package by.impl;
 
 
-import by.domain.Anime;
 import by.services.AnimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +11,8 @@ public class AnimeServiceImpl {
     @Autowired
     AnimeService animeService;
 
-    Anime getAnimeById(Integer id) {
-        return animeService.getAnimeById(id);
+    public void insertAnime(String name, String publicationDate, String site, String newSeries) {
+        animeService.insertAnime(name, publicationDate, site, newSeries);
     }
 
 }

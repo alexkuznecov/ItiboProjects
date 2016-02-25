@@ -1,21 +1,47 @@
 package by;
 
-import by.domain.Anime;
+import by.domain.SearchObject;
 import by.services.AnimeService;
+import by.services.SearchService;
+import by.util.AnimeVostParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.IOException;
+
 public class Main {
 
     private static final Logger LOG = LoggerFactory.getLogger(Main.class);
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
         AnimeService animeService = (AnimeService) ctx.getBean("animeService");
+        SearchService searchService = (SearchService) ctx.getBean("searchService");
 
-        Anime anime = animeService.getAnimeById(19);
+        while (true) {
 
-        LOG.info("Anime id = 5 : " + anime.getName() + " " + anime.getPublicationDate() + " " + anime.getSite());
+            LOG.warn("Update started");
+            SearchObject searchObject = searchService.getSearchObjectByUserId(-1);
+
+            AnimeVostParser animeVostParser = new AnimeVostParser();
+            animeVostParser.getUpdateFromSite(searchObject.getName(), searchObject.getDate());
+
+            for (int i =0; i< animeVostParser.getNewAnime().size(); i++) {
+                animeService.insertAnime(animeVostParser.getNewAnime().get(i).getName(), animeVostParser.getNewAnime().get(i).getPublicationDate(), animeVostParser.getNewAnime().get(i).getSite(), animeVostParser.getNewAnime().get(i).getNewSeries());
+                LOG.info("Inserted" + animeVostParser.getNewAnime().get(i).getName());
+            }
+
+            if (!animeVostParser.getNewAnime().isEmpty()) {
+                searchService.updateLastSearchObject(-1, animeVostParser.getNewAnime().get(0).getName(), animeVostParser.getNewAnime().get(0).getPublicationDate());
+            }
+
+            try {
+                Thread.sleep(3600000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            LOG.warn("Update finished. Updated " + animeVostParser.getNewAnime().size() + " record's");
+        }
     }
 }
