@@ -101,9 +101,11 @@ public class AnimeVostParser {
                 parsedAnime.setName(list1[0]);
                 String[] list2 = list1[1].split(" ");
 
-                if (list2[0].contains("-")) {
+                if (list2[0].contains("-") && list2[0].length() >= 3) {
                     String[] list3 = list2[0].split("-");
                     parsedAnime.setNewSeries(list3[1]);
+                } else if (list2[0].length() > 1) {
+                    parsedAnime.setNewSeries(list2[1]);
                 } else {
                     parsedAnime.setNewSeries(list2[0]);
                 }

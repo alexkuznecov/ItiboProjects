@@ -27,6 +27,8 @@ public class Main {
             AnimeVostParser animeVostParser = new AnimeVostParser();
             animeVostParser.getUpdateFromSite(searchObject.getName(), searchObject.getDate());
 
+            LOG.info("Reading finshed");
+
             for (int i =0; i< animeVostParser.getNewAnime().size(); i++) {
                 animeService.insertAnime(animeVostParser.getNewAnime().get(i).getName(), animeVostParser.getNewAnime().get(i).getPublicationDate(), animeVostParser.getNewAnime().get(i).getSite(), animeVostParser.getNewAnime().get(i).getNewSeries());
                 LOG.info("Inserted" + animeVostParser.getNewAnime().get(i).getName());
