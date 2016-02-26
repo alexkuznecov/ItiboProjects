@@ -35,13 +35,13 @@ public class Main {
             if (!animeVostParser.getNewAnime().isEmpty()) {
                 searchService.updateLastSearchObject(-1, animeVostParser.getNewAnime().get(0).getName(), animeVostParser.getNewAnime().get(0).getPublicationDate());
             }
-
+            LOG.warn("Update finished. Updated " + animeVostParser.getNewAnime().size() + " record's");
             try {
                 Thread.sleep(3600000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            LOG.warn("Update finished. Updated " + animeVostParser.getNewAnime().size() + " record's");
+
         }
     }
 }
