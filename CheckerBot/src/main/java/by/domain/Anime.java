@@ -28,7 +28,11 @@ public class Anime {
     }
 
     public void setNewSeries(String newSeries) {
-        this.newSeries = newSeries;
+        if (!newSeries.equals("")) {
+            this.newSeries = newSeries;
+        } else {
+            this.newSeries = "0";
+        }
     }
 
     public String getPublicationDate() {

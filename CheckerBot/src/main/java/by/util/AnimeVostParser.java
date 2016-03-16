@@ -4,13 +4,15 @@ import by.domain.Anime;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AnimeVostParser {
 
@@ -69,8 +71,6 @@ public class AnimeVostParser {
                 pageViewsCounter++;
             }
 
-            char chr = '[';
-            String str = String.valueOf(chr);
             try {
                 Thread.sleep(3000);
                 LOG.info("Slipped in 3000");
@@ -80,50 +80,29 @@ public class AnimeVostParser {
             Connection con = Jsoup.connect(siteUrl).userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21");
             con.timeout(180000).ignoreHttpErrors(true).followRedirects(true);
             Document doc = con.get();
-            Element el = doc.getElementById("dle-content");
-            List<Element> elements = el.getElementsByClass("shortstory");
+            String str1 = doc.outerHtml();
+            //LOG.info(str1);
+            Pattern pattern = Pattern.compile("shortstory.*?<h2>.*?href=\"(.*?)\">((.*?)\\[(\\d*).*?)<.*?<\\/span.*?<span.*?>((\\d*).([а-яА-Я]*).(\\d{0,4}))<\\/span>", Pattern.DOTALL | Pattern.MULTILINE);
+            Matcher matcher = pattern.matcher(str1);
 
-            for (int i = 0; i < elements.size(); i++) {
+            while (matcher.find()) {
                 Anime parsedAnime = new Anime();
-
-                List<Element> elements1 = elements.get(i).getElementsByClass("shortstoryHead");
-                List<Element> elements2 = elements.get(i).getElementsByClass("staticInfoLeftData");
-
-                String bufNameCompl = elements1.get(0).text();
-                List<Element> elementsForName = elements1.get(0).getElementsByTag("a");
-                String bufDateCompl = elements2.get(0).text();
-
-                String[] list = bufDateCompl.split(" ");
-                int monthNumber = DateConvertor.getMonthNumberByName(list[1]);
-                parsedAnime.setPublicationDate(list[0] + "-" + monthNumber + "-" + list[2]);
-
-                String[] list1 = bufNameCompl.split("\\[");
-                parsedAnime.setName(list1[0]);
-                String[] list2 = list1[1].split(" ");
-
-                if (list2[0].contains("-") && list2[0].length() >= 3) {
-                    String[] list3 = list2[0].split("-");
-                    parsedAnime.setNewSeries(list3[1]);
-                } else if (list2[0].length() > 1) {
-                    parsedAnime.setNewSeries(list2[1]);
-                } else {
-                    parsedAnime.setNewSeries(list2[0]);
-                }
-
-                String hrefAttr = elementsForName.get(0).attr("href");
-                parsedAnime.setSite(hrefAttr);
+                parsedAnime.setSite(matcher.group(1));
+                parsedAnime.setName(matcher.group(3));
+                parsedAnime.setNewSeries(matcher.group(4));
+                String date = matcher.group(6) + "-" + DateConvertor.getMonthNumberByName(matcher.group(7)) + "-" + matcher.group(8);
+                parsedAnime.setPublicationDate(date);
                 LOG.info(parsedAnime.getName() + " " + parsedAnime.getNewSeries() + " " + parsedAnime.getPublicationDate());
 
                 if (parsedAnime.getName().equals(name) && parsedAnime.getPublicationDate().equals(lastUpdateDate)) {
                     endSearch = true;
+                    Collections.reverse(newAnime);
                     break;
                 } else {
                     newAnime.add(parsedAnime);
                 }
             }
-
         }
-
     }
 
 }
