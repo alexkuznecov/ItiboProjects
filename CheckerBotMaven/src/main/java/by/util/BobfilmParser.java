@@ -93,7 +93,7 @@ public class BobfilmParser {
                     filmName.setLength(filmName.length() - 5);
                     parsedFilm.setName(filmName.toString());
                     parsedFilm.setYear(Integer.parseInt(matcher.group(3)));
-                    parsedFilm.setQuality(matcher.group(4));
+                    parsedFilm.setQuality(matcher.group(4).replace("-","").toUpperCase());
                     parsedFilm.setSound(matcher.group(5));
 
                     if (parsedFilm.getName().equals(name)) {

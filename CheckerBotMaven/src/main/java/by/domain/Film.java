@@ -10,7 +10,7 @@ public class Film {
 
     private int year;
 
-    private String quality;
+    private VideoQuality quality;
 
     private String sound;
 
@@ -56,12 +56,12 @@ public class Film {
         this.year = year;
     }
 
-    public String getQuality() {
+    public VideoQuality getQuality() {
         return quality;
     }
 
     public void setQuality(String quality) {
-        this.quality = quality;
+        this.quality = VideoQuality.valueOf(quality);
     }
 
     public String getSound() {

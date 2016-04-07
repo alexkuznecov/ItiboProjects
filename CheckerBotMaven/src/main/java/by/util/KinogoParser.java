@@ -93,7 +93,7 @@ public class KinogoParser {
                     filmName.setLength(filmName.length() - 1);
                     parsedFilm.setName(filmName.toString());
                     parsedFilm.setYear(Integer.parseInt(matcher.group(3)));
-                    parsedFilm.setQuality(matcher.group(4).trim());
+                    parsedFilm.setQuality(matcher.group(4).replace("-","").toUpperCase().trim());
                     parsedFilm.setSound(matcher.group(5).trim());
 
                     if (parsedFilm.getName().equals(name)) {
