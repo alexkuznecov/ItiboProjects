@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class KinogoParser {
+public class BobfilmParser {
 
-    private static final Logger LOG = LoggerFactory.getLogger(KinogoParser.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BobfilmParser.class);
 
     private List<Film> newFilm;
 
@@ -24,7 +24,7 @@ public class KinogoParser {
 
     private String baseUrl;
 
-    public KinogoParser() {
+    public BobfilmParser() {
         newFilm = new ArrayList<Film>();
     }
 
@@ -48,8 +48,8 @@ public class KinogoParser {
 //        } catch (IOException e) {
 //
 //        }
-        siteUrl = "http://kinogo.co/";
-        baseUrl = "http://kinogo.co/";
+        siteUrl = "http://bobfilm1.net";
+        baseUrl = "http://bobfilm1.net/";
     }
 
     public void getUpdateFromSite(String name) throws IOException {
@@ -83,18 +83,18 @@ public class KinogoParser {
                 Document doc = con.get();
                 String str1 = doc.outerHtml();
                 //LOG.info(str1);
-                Pattern pattern = Pattern.compile("shortstory.*\"zagolovki\"><a href=\"(.*?)\">(.*?)\\((.*?)\\).*?Качество:<\\/b>.(.*?)<.*Перевод:<\\/b>.(.*?)<", Pattern.DOTALL | Pattern.MULTILINE);
+                Pattern pattern = Pattern.compile("sh3.*?href=\"(.*?)\">(.*?)<.*?Год.*?html.*?>(.*?)<.*?Качество.*?;\">(.*?)<.*?Перевод:<\\/b>.(.*?)<", Pattern.DOTALL | Pattern.MULTILINE);
                 Matcher matcher = pattern.matcher(str1);
 
                 while (matcher.find()) {
                     Film parsedFilm = new Film();
                     parsedFilm.setSite(matcher.group(1));
                     StringBuffer filmName = new StringBuffer(matcher.group(2));
-                    filmName.setLength(filmName.length() - 1);
+                    filmName.setLength(filmName.length() - 5);
                     parsedFilm.setName(filmName.toString());
                     parsedFilm.setYear(Integer.parseInt(matcher.group(3)));
-                    parsedFilm.setQuality(matcher.group(4).trim());
-                    parsedFilm.setSound(matcher.group(5).trim());
+                    parsedFilm.setQuality(matcher.group(4));
+                    parsedFilm.setSound(matcher.group(5));
 
                     if (parsedFilm.getName().equals(name)) {
                         endSearch = true;
@@ -110,5 +110,4 @@ public class KinogoParser {
             }
         }
     }
-
 }
