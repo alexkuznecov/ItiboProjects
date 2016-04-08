@@ -3,8 +3,9 @@ package by.impl;
 import by.domain.Film;
 import by.services.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class FilmServiceImpl implements FilmService {
 
 
