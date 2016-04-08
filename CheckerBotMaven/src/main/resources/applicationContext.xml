@@ -18,6 +18,11 @@
 
         <mvc:annotation-driven/>
 
+        <bean id="filmService" class="org.mybatis.spring.mapper.MapperFactoryBean">
+            <property name="mapperInterface" value="by.services.FilmService" />
+            <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        </bean>
+
         <bean id="animeService" class="org.mybatis.spring.mapper.MapperFactoryBean">
             <property name="mapperInterface" value="by.services.AnimeService" />
             <property name="sqlSessionFactory" ref="sqlSessionFactory" />

@@ -18,7 +18,6 @@ public class Main {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
         AnimeService animeService = (AnimeService) ctx.getBean("animeService");
         SearchService searchService = (SearchService) ctx.getBean("searchService");
-
         while (true) {
 
 //            LOG.warn("Anime update started");
