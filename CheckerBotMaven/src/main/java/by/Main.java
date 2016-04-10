@@ -3,6 +3,7 @@ package by;
 import by.services.AnimeService;
 import by.services.FilmService;
 import by.services.SearchService;
+import by.util.AnimeUpdateStarter;
 import by.util.FilmUpdateStarter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +21,8 @@ public class Main {
         SearchService searchService = (SearchService) ctx.getBean("searchService");
         FilmService filmService = (FilmService) ctx.getBean("filmService");
         while (true) {
-//            AnimeUpdateStarter animeUpdateStarter = new AnimeUpdateStarter(animeService, searchService);
-//            animeUpdateStarter.startUpdate();
+            AnimeUpdateStarter animeUpdateStarter = new AnimeUpdateStarter(animeService, searchService);
+            animeUpdateStarter.startUpdate();
 
             FilmUpdateStarter filmUpdateStarter = new FilmUpdateStarter(filmService, searchService);
             filmUpdateStarter.startUpdate();
