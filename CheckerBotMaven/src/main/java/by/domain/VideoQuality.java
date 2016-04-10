@@ -7,8 +7,9 @@ public enum VideoQuality {
     DVDRIP(2,"DVDRIP"),
     SATRIP(3,"SATRIP"),
     WEBDLRIP(4,"WEBDLRIP"),
-    HDRIP(5,"HDRIP"),
-    BDRIP(6,"BDRIP");
+    HDTVRIP(5,"HDTVRIP"),
+    HDRIP(6,"HDRIP"),
+    BDRIP(7,"BDRIP");
 
     private final Integer value;
 

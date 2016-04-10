@@ -52,7 +52,7 @@ public class BobfilmParser {
         baseUrl = "http://bobfilm1.net/";
     }
 
-    public void getUpdateFromSite(String name) throws IOException {
+    public void getUpdateFromSite(String name, Integer year) throws IOException {
 
         newFilm = new ArrayList<Film>();
 
@@ -83,7 +83,7 @@ public class BobfilmParser {
                 Document doc = con.get();
                 String str1 = doc.outerHtml();
                 //LOG.info(str1);
-                Pattern pattern = Pattern.compile("sh3.*?href=\"(.*?)\">(.*?)<.*?Год.*?html.*?>(.*?)<.*?Качество.*?;\">(.*?)<.*?Перевод:<\\/b>.(.*?)<", Pattern.DOTALL | Pattern.MULTILINE);
+                Pattern pattern = Pattern.compile("sh3.*?href=\"(.*?)\">(.*?)<.*?Год.*?>([2|1].*?)<.*?Качество.*?;\">(.*?)<.*?Перевод:<\\/b>.(.*?)<", Pattern.DOTALL | Pattern.MULTILINE);
                 Matcher matcher = pattern.matcher(str1);
 
                 while (matcher.find()) {
@@ -96,7 +96,8 @@ public class BobfilmParser {
                     parsedFilm.setQuality(matcher.group(4).replace("-","").toUpperCase());
                     parsedFilm.setSound(matcher.group(5));
 
-                    if (parsedFilm.getName().equals(name)) {
+                    LOG.info(parsedFilm.getName() + " " + parsedFilm.getYear() + " " + parsedFilm.getSite() + " " + parsedFilm.getQuality() + " " + parsedFilm.getSound());
+                    if (parsedFilm.getName().equals(name) && parsedFilm.getYear() == year) {
                         endSearch = true;
                         Collections.reverse(newFilm);
                         break;

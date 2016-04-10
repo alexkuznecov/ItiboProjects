@@ -52,7 +52,7 @@ public class KinogoParser {
         baseUrl = "http://kinogo.co/";
     }
 
-    public void getUpdateFromSite(String name) throws IOException {
+    public void getUpdateFromSite(String name, Integer year) throws IOException {
 
         newFilm = new ArrayList<Film>();
 
@@ -67,7 +67,7 @@ public class KinogoParser {
                 pageViewsCounter++;
                 firstPage = false;
             } else {
-                siteUrl = baseUrl + "/page/" + pageViewsCounter + "/";
+                siteUrl = baseUrl + "page/" + pageViewsCounter + "/";
                 pageViewsCounter++;
             }
 
@@ -79,34 +79,30 @@ public class KinogoParser {
             }
             Connection con = Jsoup.connect(siteUrl).userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21");
             con.timeout(180000).ignoreHttpErrors(true).followRedirects(true);
-            try {
-                Document doc = con.get();
-                String str1 = doc.outerHtml();
-                //LOG.info(str1);
-                Pattern pattern = Pattern.compile("shortstory.*\"zagolovki\"><a href=\"(.*?)\">(.*?)\\((.*?)\\).*?Качество:<\\/b>.(.*?)<.*Перевод:<\\/b>.(.*?)<", Pattern.DOTALL | Pattern.MULTILINE);
-                Matcher matcher = pattern.matcher(str1);
 
-                while (matcher.find()) {
-                    Film parsedFilm = new Film();
-                    parsedFilm.setSite(matcher.group(1));
-                    StringBuffer filmName = new StringBuffer(matcher.group(2));
-                    filmName.setLength(filmName.length() - 1);
-                    parsedFilm.setName(filmName.toString());
-                    parsedFilm.setYear(Integer.parseInt(matcher.group(3)));
-                    parsedFilm.setQuality(matcher.group(4).replace("-","").toUpperCase().trim());
-                    parsedFilm.setSound(matcher.group(5).trim());
+            Document doc = con.get();
+            String str1 = doc.outerHtml();
+            Pattern pattern = Pattern.compile("zagolovki\"><a href=\"(.*?)\">(.*?)\\((.*?)\\).*?Качество:<\\/b>.(.*?)<.*?Перевод:<\\/b>.(.*?)<", Pattern.DOTALL | Pattern.MULTILINE);
+            Matcher matcher = pattern.matcher(str1);
+            while (matcher.find()) {
+                Film parsedFilm = new Film();
+                parsedFilm.setSite(matcher.group(1));
+                StringBuffer filmName = new StringBuffer(matcher.group(2));
+                filmName.setLength(filmName.length() - 1);
+                parsedFilm.setName(filmName.toString());
+                parsedFilm.setYear(Integer.parseInt(matcher.group(3)));
+                parsedFilm.setQuality(matcher.group(4).replace("-", "").toUpperCase().trim());
+                parsedFilm.setSound(matcher.group(5).trim());
 
-                    if (parsedFilm.getName().equals(name)) {
-                        endSearch = true;
-                        Collections.reverse(newFilm);
-                        break;
-                    } else {
-                        newFilm.add(parsedFilm);
-                    }
+                LOG.info(parsedFilm.getName() + " " + parsedFilm.getYear() + " " + parsedFilm.getSite() + " " + parsedFilm.getQuality() + " " + parsedFilm.getSound());
+
+                if (parsedFilm.getName().equals(name) && parsedFilm.getYear() == year) {
+                    endSearch = true;
+                    Collections.reverse(newFilm);
+                    break;
+                } else {
+                    newFilm.add(parsedFilm);
                 }
-
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     }
