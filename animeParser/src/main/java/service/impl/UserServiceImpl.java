@@ -3,12 +3,12 @@ package service.impl;
 import domain.Anime;
 import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import service.UserService;
 
 import java.util.List;
 
-@Service(value = "userService")
+@Component
 public class UserServiceImpl {
 
     @Autowired

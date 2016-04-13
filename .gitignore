@@ -2,6 +2,9 @@
 /animeParser/target
 /animeParser/.idea
 
+*.iml
+/CheckerBotMaven/target
+/CheckerBotMaven/.idea
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

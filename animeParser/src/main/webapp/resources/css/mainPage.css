@@ -22,8 +22,12 @@
 }
 
 .centerLogin {
-    position: relative;
-    left : 20%;
-    margin-top : 5%;
-    width : 30%;
+    background-image : image("resources/images/background/form.jpg");
+    width : 600px;
+    height : 600px;
+}
+
+.loginForm {
+    width : 600px;
+    height : 374px;
 }

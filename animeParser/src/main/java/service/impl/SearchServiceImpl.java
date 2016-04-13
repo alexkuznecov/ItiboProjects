@@ -2,10 +2,10 @@ package service.impl;
 
 import domain.SearchObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import service.SearchService;
 
-@Service(value = "searchService")
+@Component
 public class SearchServiceImpl {
 
     @Autowired

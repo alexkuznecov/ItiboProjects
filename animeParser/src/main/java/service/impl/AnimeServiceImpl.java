@@ -2,10 +2,10 @@ package service.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import service.AnimeService;
 
-@Service(value = "animeService")
+@Component
 public class AnimeServiceImpl {
 
     @Autowired
