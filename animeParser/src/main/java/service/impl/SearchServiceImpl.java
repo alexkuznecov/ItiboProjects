@@ -1,15 +1,15 @@
 package service.impl;
 
 import domain.SearchObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import service.SearchService;
 
-@Component
 public class SearchServiceImpl {
 
-    @Autowired
     SearchService searchService;
+
+    public void setSearchService(SearchService searchService) {
+        this.searchService = searchService;
+    }
 
     public SearchObject getSearchObjectByUserId(int id) {
         return searchService.getSearchObjectByUserId(id);

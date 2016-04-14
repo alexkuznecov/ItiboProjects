@@ -4,6 +4,7 @@ package controller;
 import domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import service.impl.UserServiceImpl;
 
@@ -17,6 +18,7 @@ public class AuthBin {
 
     private static final Logger LOG = LoggerFactory.getLogger(AuthBin.class);
 
+    @Autowired
     private UserServiceImpl userService;
 
     private User user;
@@ -24,7 +26,6 @@ public class AuthBin {
     public AuthBin() {
         LOG.info("AuthBin created");
         user = new User();
-        userService = new UserServiceImpl();
     }
 
     public User getUser() {

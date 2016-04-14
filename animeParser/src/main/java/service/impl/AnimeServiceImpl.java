@@ -1,15 +1,15 @@
 package service.impl;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import service.AnimeService;
 
-@Component
 public class AnimeServiceImpl {
 
-    @Autowired
     AnimeService animeService;
+
+    public void setAnimeService(AnimeService animeService) {
+        this.animeService = animeService;
+    }
 
     public Integer getAnimeIdByName(String name) {
         return animeService.getAnimeIdByName(name);
