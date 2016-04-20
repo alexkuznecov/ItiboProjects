@@ -1,0 +1,17 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+
+        <h:outputStylesheet name="/css/menu.css" />
+        <div class="menu">
+            <h:form>
+                <h:commandButton styleClass="item itemHome transition" action="main"/>
+                <h:commandButton styleClass="item itemProfile transition" action="#"/>
+                <h:commandButton styleClass="item itemSubscribe transition" action="subscribed"/>
+                <h:commandButton styleClass="item itemUpdate transition" action="#"/>
+                <h:commandButton styleClass="item itemSearch transition" action="search"/>
+            </h:form>
+        </div>
+</ui:composition>

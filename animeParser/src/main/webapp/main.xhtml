@@ -4,20 +4,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     <title>Main Page</title>
-    <link href="resources/css/mainPage.css" rel="stylesheet"/>
 </h:head>
-<h:body style="background: url(resources/images/background/mainBackN.jpg); background-size:cover; background-attachment: fixed;">
+    <h:body style="background: url(resources/images/background/mainBackN.jpg); background-size:cover; background-attachment: fixed;">
 
         <img src="resources/images/erica.jpg" alt="" width="340" height="465" style="padding-left: -5%"/>
-        <p:dock position="bottom" halign="center" itemWidth="50" maxWidth="60" proximity="90">
-            <p:menuitem value="Home" icon="resources/images/menu/home.ico" url="/main.xhtml" />
-            <p:menuitem value="Profile" icon="resources/images/menu/profile.ico" url="#" />
-            <p:menuitem value="Subscribe" icon="resources/images/menu/subscribe.ico" url="/subscribed.xhtml" />
-            <p:menuitem value="Updates Anime" icon="resources/images/menu/updatesAnime.ico" url="/search.xhtml" />
-            <p:menuitem value="Updates Film" icon="resources/images/menu/updatesFilm.ico" url="/search.xhtml" />
-        </p:dock>
-</h:body>
+
+        <ui:include src="menu.xhtml" />
+
+        <!--<p:dock position="bottom" halign="center" itemWidth="50" maxWidth="60" proximity="90">-->
+            <!--<p:menuitem value="Home" icon="resources/images/menu/home.ico" url="/main.xhtml" />-->
+            <!--<p:menuitem value="Profile" icon="resources/images/menu/profile.ico" url="#" />-->
+            <!--<p:menuitem value="Subscribe" icon="resources/images/menu/subscribe.ico" url="/subscribed.xhtml" />-->
+            <!--<p:menuitem value="Updates Anime" icon="resources/images/menu/updatesAnime.ico" url="/search.xhtml" />-->
+            <!--<p:menuitem value="Updates Film" icon="resources/images/menu/updatesFilm.ico" url="/search.xhtml" />-->
+        <!--</p:dock>-->
+
+        <!--<h:commandButton styleClass="item" />-->
+    </h:body>
 </html>

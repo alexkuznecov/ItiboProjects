@@ -1,0 +1,48 @@
+.menu {
+    margin-top : -70px;
+    margin-left : 20px;
+    width : 90px;
+}
+
+.item {
+    position : relative;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.item:hover {
+    width : 60px;
+    height : 60px;
+}
+
+.itemHome {
+    background: url("/resources/images/menu/home.ico") no-repeat;
+    background-size: cover;
+}
+
+.itemProfile {
+    background: url("/resources/images/menu/profile.ico") no-repeat;
+    background-size: cover;
+}
+
+.itemSubscribe {
+    background: url("/resources/images/menu/subscribe.ico") no-repeat;
+    background-size: cover;
+}
+
+.itemUpdate {
+    background: url("/resources/images/menu/updatesAnime.ico") no-repeat;
+    background-size: cover;
+}
+
+.itemSearch {
+    background: url("/resources/images/menu/updatesFilm.ico") no-repeat;
+    background-size: cover;
+}
+
+.transition {
+    transition : 1s;
+}

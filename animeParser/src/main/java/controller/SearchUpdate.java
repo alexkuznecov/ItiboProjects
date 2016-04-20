@@ -7,10 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
-import service.AnimeService;
-import service.SearchService;
-import service.SubscriberService;
-import util.AnimeVostParser;
+import service.impl.AnimeServiceImpl;
+import service.impl.SearchServiceImpl;
+import service.impl.SubscriberServiceImpl;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
@@ -28,19 +27,17 @@ public class SearchUpdate {
     private AuthBin authBin;
 
     @Autowired
-    private SearchService searchService;
+    private SearchServiceImpl searchService;
 
     @Autowired
-    private AnimeService animeService;
+    private AnimeServiceImpl animeService;
 
     @Autowired
-    private SubscriberService subscriberService;
+    private SubscriberServiceImpl subscriberService;
 
-    public AnimeVostParser animeVostParser;
 
     public SearchUpdate() {
         LOG.info("SearchUpdate created");
-        animeVostParser = new AnimeVostParser();
     }
 
     public void updateInformation() throws IOException {
@@ -48,11 +45,9 @@ public class SearchUpdate {
 
         SearchObject searchObject = new SearchObject();
 
-        searchObject = searchService.getSearchObjectByUserId(0);
+        searchObject = searchService.getSearchObjectByUserId(-1);
 
         LOG.info(searchObject.getName() + " " + searchObject.getDate());
-
-        animeVostParser.getUpdateFromSite(searchObject.getName(), searchObject.getDate());
 
     }
 
@@ -79,9 +74,5 @@ public class SearchUpdate {
             LOG.info("You already subscribed");
             return null;
         }
-    }
-
-    public AnimeVostParser getAnimeVostParser() {
-        return animeVostParser;
     }
 }

@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background: url("/resources/images/background/mainBack.jpg");
+    background-size:cover;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+#header {
+    position: relative;
+    width : 30%;
+    height : 65%;
+    float:left;
+}
+
+#content {
+    float : right;
+    position: relative;
+    width : 70%;
+    height : 100%;
+    padding-bottom: 0;
+}
+
+#menu {
+    position: relative;
+    height: 200px;
+    width : 30%;
+    float : left;
+}
+
+#footer {
+    position: absolute;
+    left : 0;
+    bottom: 0;
+    width : 100%;
+    height : 20px;
+}
+
+.welcometext {
+    color: blueviolet;
+    margin-top : 5%;
+    margin-left: 10%;
+}
