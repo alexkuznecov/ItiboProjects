@@ -1,33 +1,37 @@
-.menu {
-    left : 20%;
-    position: absolute;
-    width : 15%;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.mainContent {
-    left : 35%;
-    position: relative;
-    width : 65%;
-    background-color: lightseagreen;
+html
+body {
+    background: url("/resources/images/background/mainBackN.jpg");
+    background-size:cover;
+    background-attachment: fixed;
+    height : 100%;
 }
 
-.statdiv {
-    color: limegreen;
-    position: absolute;
+#content {
+    position : relative;
+    float : right;
+    width : 70%;
+    height : 100%;
+}
+
+#menu {
+    position : relative;
     width : 30%;
+    float : left;
+    margin-top : 33%;
 }
 
-.back {
-    background : image("resources/images/background/back1.jpg");
+#footer {
+    position : absolute;
+    left: 0;
+    bottom: 0;
 }
 
-.centerLogin {
-    background-image : image("resources/images/background/form.jpg");
-    width : 600px;
-    height : 600px;
+#text {
+    margin-top : 30%;
 }
 
-.loginForm {
-    width : 600px;
-    height : 374px;
-}

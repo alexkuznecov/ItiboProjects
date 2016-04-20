@@ -8,21 +8,49 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     <title>Main Page</title>
+    <h:outputStylesheet name="/css/mainPage.css"/>
 </h:head>
-    <h:body style="background: url(resources/images/background/mainBackN.jpg); background-size:cover; background-attachment: fixed;">
+    <h:body>
+        <div id="content" >
+           <div id="text">
+               <table border="0" >
+                   <tr>
+                       <td>Добро пожаловать в наше приложение!</td>
+                   </tr>
+                   <tr>
+                       <td>Что оно делает? Все очень просто.</td>
+                   </tr>
+                   <tr>
+                       <td>Главная его цель : помочь пользователю отследить</td>
+                   </tr>
+                   <tr>
+                       <td>новинки фильмов и аниме. </td>
+                   </tr>
+                   <tr>
+                       <td>Источниками сбора информации являются популярные сайты</td>
+                   </tr>
+                   <tr>
+                       <td>список которых пока невелик, но будет пополняться.</td>
+                   </tr>
+                   <tr>
+                       <td>Навигация по сайту осуществялется с помощью меню,</td>
+                   </tr>
+                   <tr>
+                       <td>расположенного слева внизу. </td>
+                   </tr>
 
-        <img src="resources/images/erica.jpg" alt="" width="340" height="465" style="padding-left: -5%"/>
+               </table>
+           </div>
+        </div>
 
-        <ui:include src="menu.xhtml" />
+        <div id="menu" >
+            <ui:include src="menu.xhtml" />
+        </div>
 
-        <!--<p:dock position="bottom" halign="center" itemWidth="50" maxWidth="60" proximity="90">-->
-            <!--<p:menuitem value="Home" icon="resources/images/menu/home.ico" url="/main.xhtml" />-->
-            <!--<p:menuitem value="Profile" icon="resources/images/menu/profile.ico" url="#" />-->
-            <!--<p:menuitem value="Subscribe" icon="resources/images/menu/subscribe.ico" url="/subscribed.xhtml" />-->
-            <!--<p:menuitem value="Updates Anime" icon="resources/images/menu/updatesAnime.ico" url="/search.xhtml" />-->
-            <!--<p:menuitem value="Updates Film" icon="resources/images/menu/updatesFilm.ico" url="/search.xhtml" />-->
-        <!--</p:dock>-->
-
-        <!--<h:commandButton styleClass="item" />-->
+        <div id="footer" >
+            <ui:insert name="footer">
+                <ui:include src="/WEB-INF/templates/footer.xhtml" />
+            </ui:insert>
+        </div>
     </h:body>
 </html>
