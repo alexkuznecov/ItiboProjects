@@ -19,7 +19,16 @@
 
         </ui:define>
         <ui:define name="content">
-
+            <h:outputLabel value="Введите ваше имя" />
+            <h:inputText value="#{regBean.name}" />
+            <h:outputLabel value="Введите вашу фамилию" />
+            <h:inputText value="#{regBean.surname} " />
+            <h:outputLabel value="Введите ваш логин" />
+            <h:inputText value="#{regBean.login}" />
+            <h:outputLabel value="Введите пароль" />
+            <h:inputSecret value="#{regBean.password}" />
+            <h:outputLabel value="Повтрите пароль" />
+            <h:inputSecret value="#{regBean.confirmPassword}" />
         </ui:define>
     </ui:composition>
 </h:body>

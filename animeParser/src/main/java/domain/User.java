@@ -10,11 +10,15 @@ public class User {
 
     private String surname;
 
+    private String email;
+
     private String login;
 
     private String password;
 
     private List<Anime> userSubscribedAnime;
+
+    private List<Film> userSubscribedFilm;
 
     public void setId(Integer id) {
         this.id = id;
@@ -52,6 +56,14 @@ public class User {
         return userSubscribedAnime;
     }
 
+    public List<Film> getUserSubscribedFilm() {
+        return userSubscribedFilm;
+    }
+
+    public void setUserSubscribedFilm(List<Film> userSubscribedFilm) {
+        this.userSubscribedFilm = userSubscribedFilm;
+    }
+
     public String getSurname() {
         return surname;
     }
@@ -62,5 +74,13 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -14,6 +14,8 @@ public class Anime {
 
     private String site;
 
+    private User users;
+
     public void setName(String name) {
         this.name = name;
     }
@@ -60,5 +62,13 @@ public class Anime {
 
     public void setSite(String site) {
         this.site = site;
+    }
+
+    public User getUsers() {
+        return users;
+    }
+
+    public void setUsers(User users) {
+        this.users = users;
     }
 }
