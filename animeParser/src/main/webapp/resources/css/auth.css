@@ -5,6 +5,10 @@ body {
     height : 100%
 }
 
+* {
+    text-decoration : darkblue;
+}
+
 #centrBlock {
     position: absolute;
     background: url("/resources/images/background/form2.jpg");
@@ -18,4 +22,11 @@ body {
 #myform {
     margin-left: 35%;
     margin-top: 26%;
+}
+
+#regform {
+    position : absolute;
+    left: 1px;
+    bottom: 1px;
+    text-decoration: darkblue;
 }

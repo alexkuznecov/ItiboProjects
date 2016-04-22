@@ -15,23 +15,17 @@
         <h:form id="myform">
             <p:growl id="growl" showDetail="true" life="3000"/>
 
-            <p>Login</p>
-            <p:inputText id="login" value="#{authBean.user.login}" required="true" requiredMessage="Login required">
-
-            </p:inputText>
-
-            <p>Password</p>
-            <p:password id="pass" value="#{authBean.user.password}" required="true" requiredMessage="Password required">
-            </p:password>
-
+            <p><i><b>Логин :</b></i></p>
+            <p:inputText id="login" value="#{authBean.user.login}" required="true" requiredMessage="Login required" style="width : 58.5%" />
+            <p><i><b>Пароль :</b></i></p>
+            <p:password id="pass" value="#{authBean.user.password}" required="true" requiredMessage="Password required" style="width : 58.5%" />
             <p>
-                <p:commandButton value="Login" action="#{authBean.doLogin}" ajax="false" style="width : 120px">
-                </p:commandButton>
-                <p:commandButton value="Register" action="registration" ajax="false" style="width : 120px">
-                </p:commandButton>
+                <i><p:commandButton value="Войти" action="#{authBean.doLogin}" ajax="false"  style="width : 61%" /></i>
             </p>
-
         </h:form>
     </div>
+    <h:form id="regform">
+        <p:commandLink value="#{message.NotAccaunt}" action="registration" ajax="false" />
+    </h:form>
 </h:body>
 </html>

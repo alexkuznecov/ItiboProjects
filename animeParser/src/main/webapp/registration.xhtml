@@ -19,16 +19,22 @@
 
         </ui:define>
         <ui:define name="content">
-            <h:outputLabel value="Введите ваше имя" />
-            <h:inputText value="#{regBean.name}" />
-            <h:outputLabel value="Введите вашу фамилию" />
-            <h:inputText value="#{regBean.surname} " />
-            <h:outputLabel value="Введите ваш логин" />
-            <h:inputText value="#{regBean.login}" />
-            <h:outputLabel value="Введите пароль" />
-            <h:inputSecret value="#{regBean.password}" />
-            <h:outputLabel value="Повтрите пароль" />
-            <h:inputSecret value="#{regBean.confirmPassword}" />
+            <h:form action="#" name="regForm">
+                <h:panelGrid id="regData" columns="2" border="0" cellpadding="9" cellspacing="9">
+                    <h:outputLabel value="Введите ваше имя"/>
+                    <h:inputText value="#{regBean.name}" required="true"/>
+                    <h:outputLabel value="Введите вашу фамилию"/>
+                    <h:inputText value="#{regBean.surname} "/>
+                    <h:outputLabel value="Введите ваш логин"/>
+                    <h:inputText value="#{regBean.login_reg}" required="true"/>
+                    <h:outputLabel value="Введите пароль"/>
+                    <h:inputSecret value="#{regBean.password_reg}" required="true"/>
+                    <h:outputLabel value="Повтрите пароль"/>
+                    <h:inputSecret value="#{regBean.confirmPassword}" required="true"/>
+                    <h:commandButton value="Зарегестрироваться" type="submit"/>
+                    <h:commandButton value="Сбросить" type="reset"/>
+                </h:panelGrid>
+            </h:form>
         </ui:define>
     </ui:composition>
 </h:body>

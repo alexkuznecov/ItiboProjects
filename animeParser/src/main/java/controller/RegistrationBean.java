@@ -16,9 +16,9 @@ public class RegistrationBean {
 
     private String email;
 
-    private String login;
+    private String login_reg;
 
-    private String password;
+    private String password_reg;
 
     private String confirmPassword;
 
@@ -50,24 +50,24 @@ public class RegistrationBean {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword_reg() {
+        return password_reg;
     }
 
     public String getConfirmPassword() {
         return confirmPassword;
     }
 
-    public String getLogin() {
-        return login;
+    public String getLogin_reg() {
+        return login_reg;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setLogin_reg(String login_reg) {
+        this.login_reg = login_reg;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword_reg(String password_reg) {
+        this.password_reg = password_reg;
     }
 
     public void setConfirmPassword(String confirmPassword) {
