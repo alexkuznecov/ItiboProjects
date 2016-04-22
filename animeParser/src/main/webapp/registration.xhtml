@@ -20,19 +20,33 @@
         </ui:define>
         <ui:define name="content">
             <h:form action="#" name="regForm">
-                <h:panelGrid id="regData" columns="2" border="0" cellpadding="9" cellspacing="9">
+                <h:panelGrid id="regData" columns="3" border="0" cellpadding="9" cellspacing="9">
+
                     <h:outputLabel value="Введите ваше имя"/>
-                    <h:inputText value="#{regBean.name}" required="true"/>
+                    <h:inputText  id="username" value="#{regBean.name}" required="true" requiredMessage="Name required">
+                        <f:validateLength minimum="4" maximum="10" />
+                    </h:inputText>
+                    <h:message for="username" style="color:red" />
+
                     <h:outputLabel value="Введите вашу фамилию"/>
-                    <h:inputText value="#{regBean.surname} "/>
+                    <h:inputText id="surname" value="#{regBean.surname} "/>
+                    <h:message for="surname" style="color:red" />
+
                     <h:outputLabel value="Введите ваш логин"/>
-                    <h:inputText value="#{regBean.login_reg}" required="true"/>
+                    <h:inputText id="login" value="#{regBean.login_reg}" required="true" requiredMessage="Login required"/>
+                    <h:message for="login" style="color:red" />
+
                     <h:outputLabel value="Введите пароль"/>
-                    <h:inputSecret value="#{regBean.password_reg}" required="true"/>
+                    <h:inputSecret id="password" value="#{regBean.password_reg}" required="true" requiredMessage="Password required"/>
+                    <h:message for="password" style="color:red" />
+
                     <h:outputLabel value="Повтрите пароль"/>
-                    <h:inputSecret value="#{regBean.confirmPassword}" required="true"/>
+                    <h:inputSecret id="confirmpassword" value="#{regBean.confirmPassword}" required="true" requiredMessage="Confirm Password"/>
+                    <h:message for="confirmpassword" style="color:red" />
+
                     <h:commandButton value="Зарегестрироваться" type="submit"/>
                     <h:commandButton value="Сбросить" type="reset"/>
+
                 </h:panelGrid>
             </h:form>
         </ui:define>

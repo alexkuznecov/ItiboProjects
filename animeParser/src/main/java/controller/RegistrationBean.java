@@ -1,5 +1,7 @@
 package controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +11,8 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 @Lazy
 public class RegistrationBean {
+
+    private static final Logger LOG = LoggerFactory.getLogger(RegistrationBean.class);
 
     private String name;
 
@@ -23,7 +27,7 @@ public class RegistrationBean {
     private String confirmPassword;
 
     public RegistrationBean() {
-
+        LOG.info("Registration bean created");
     }
 
     public String getName() {
