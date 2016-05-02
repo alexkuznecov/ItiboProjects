@@ -13,6 +13,7 @@ import service.impl.SearchServiceImpl;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ValueChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,10 +99,26 @@ public class UpdateBean {
         this.authBin = authBin;
     }
 
-    public void update() {
+    public void update(ValueChangeEvent e) {
+        if (e.getNewValue().equals("anime")) {
+            updateAnime();
+        } else if (e.getNewValue().equals("film")) {
+            updateFilm();
+        } else if (e.getNewValue().equals("select")) {
+            updatesAnime = null;
+            updatesFilms = null;
+        }
+    }
+
+    public void updateAnime() {
         LOG.info("Started" + authBin.getUser().getId());
         LastUpdate lastUpdate = searchService.getLastUpdatesIdByUserId(authBin.getUser().getId());
         updatesAnime = animeService.getAnimeByBeginId(lastUpdate.getAnimeId());
+    }
+
+    public void updateFilm() {
+        LOG.info("Started" + authBin.getUser().getId());
+        LastUpdate lastUpdate = searchService.getLastUpdatesIdByUserId(authBin.getUser().getId());
         updatesFilms = filmService.getFilmByBeginId(lastUpdate.getFilmId());
     }
 }

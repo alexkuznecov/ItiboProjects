@@ -12,15 +12,14 @@
     <ui:composition template="/pageTemplate.xhtml">
         <ui:define name="content">
 
-            <h:form id="mye">//valueChangeListener
-                <h:selectOneMenu id="my" value="#{updateBean.selected}">
-                    <f:selectItem itemLabel="Select" itemValue="" noSelectionOption="true" />
+            <h:form id="mye">
+                <h:selectOneMenu id="my" value="#{updateBean.selected}" valueChangeListener="#{updateBean.update}">
+                    <f:selectItem itemLabel="Select" itemValue="select" noSelectionOption="true" />
                     <f:selectItems value="#{updateBean.selectedChoise}" var="item" itemValue="#{item}" itemLabel="#{item}" />
                     <f:ajax render="pggg" />
                 </h:selectOneMenu>
 
                 <h:panelGroup id="pggg" layout="block">
-                    <!--#{updateBean.update()}-->
                     <h:dataTable id="pg" columns="4" border="2" value="#{updateBean.updatesAnime}" var="anime" rendered="#{updateBean.selected eq 'anime'}">
                         <h:column>
                             <f:facet name="header">

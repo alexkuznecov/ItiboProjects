@@ -12,7 +12,7 @@ body {
 }
 
 #header {
-    position: relative;
+    position: fixed;
     width : 30%;
     height : 65%;
     float:left;
@@ -27,14 +27,15 @@ body {
 }
 
 #menu {
-    position: relative;
+    position: fixed;
     height: 200px;
     width : 30%;
     float : left;
+    top : 63%;
 }
 
 #footer {
-    position: absolute;
+    position: fixed;
     left : 0;
     bottom: 0;
     width : 100%;
