@@ -11,9 +11,25 @@
 <h:body>
     <ui:composition template="/pageTemplate.xhtml">
         <ui:define name="content">
-            <h:form>
-                <h:outputLabel value="Input film name" />
-                <h:inputTextarea value="filmName" />
+            <h:form id="searchForm">
+                <h:outputLabel id="inputFilmText" value="#{message.InputFilmName}"/>
+                <h:inputText id="inputFilmName" value="#{searchFilm.message}">
+                    <f:ajax render="alternativeRes" execute="inputFilmName" event="keyup"
+                            listener="#{searchFilm.findByPattern}"/>
+                </h:inputText>
+                <h:commandButton id="buttonSearchFilm" value="#{message.SearchFilmButton}" action="#{searchFilm.findFilm}"/>
+
+                <div class="hintTable">
+                        <h:dataTable id="alternativeRes" columns="2" border="0" value="#{searchFilm.resultFromPattern}"
+                                     var="film">
+                            <h:column>
+                                <h:outputText value="#{film.name}"/>
+                            </h:column>
+                            <h:column>
+                                <h:commandLink styleClass="altResCol" action="#" value="#{message.Subscribe}"/>
+                            </h:column>
+                        </h:dataTable>
+                </div>
             </h:form>
         </ui:define>
     </ui:composition>

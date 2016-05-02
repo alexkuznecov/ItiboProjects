@@ -1,0 +1,11 @@
+#searchForm {
+    padding-top : 20%;
+}
+
+.hintTable {
+    padding-left : 25%;
+}
+
+.altResCol:hover {
+    background-color: red;
+}

@@ -16,4 +16,8 @@ public class FilmServiceImpl {
     public List<Film> getFilmByBeginId(Integer id) {
         return filmService.getFilmByBeginId(id);
     }
+
+    public List<Film> getFilmByPattern(String pattern) {
+        return filmService.getFilmByPattern(pattern);
+    }
 }
