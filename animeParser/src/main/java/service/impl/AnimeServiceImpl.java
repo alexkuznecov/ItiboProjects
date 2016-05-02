@@ -1,7 +1,10 @@
 package service.impl;
 
 
+import domain.Anime;
 import service.AnimeService;
+
+import java.util.List;
 
 public class AnimeServiceImpl {
 
@@ -19,5 +22,7 @@ public class AnimeServiceImpl {
         animeService.insertAnime(name,publicationDate, site, user_id);
     }
 
-
+    public List<Anime> getAnimeByBeginId(Integer id) {
+        return animeService.getAnimeByBeginId(id);
+    }
 }

@@ -11,7 +11,11 @@
 <h:body>
     <ui:composition template="/pageTemplate.xhtml">
         <ui:define name="content">
-
+            <h:form>
+                <h:outputLabel value="Input film name" />
+                <h:inputTextarea value="filmName" />
+                <h:commandButton value="Search" action="#{}"
+            </h:form>
         </ui:define>
     </ui:composition>
 </h:body>

@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Main Page</title>
+    <title>#{message.MainPage}</title>
     <h:outputStylesheet name="/css/auth.css" />
 </h:head>
 <h:body>
@@ -15,12 +15,12 @@
         <h:form id="myform">
             <p:growl id="growl" showDetail="true" life="3000"/>
 
-            <p><i><b>Логин :</b></i></p>
+            <p><i><b>#{message.Login} :</b></i></p>
             <p:inputText id="login" value="#{authBean.user.login}" required="true" requiredMessage="Login required" style="width : 58.5%" />
-            <p><i><b>Пароль :</b></i></p>
+            <p><i><b>#{message.Password} :</b></i></p>
             <p:password id="pass" value="#{authBean.user.password}" required="true" requiredMessage="Password required" style="width : 58.5%" />
             <p>
-                <i><p:commandButton value="Войти" action="#{authBean.doLogin}" ajax="false"  style="width : 61%" /></i>
+                <i><p:commandButton value="#{message.Authorize}" action="#{authBean.doLogin}" ajax="false"  style="width : 61%" /></i>
             </p>
         </h:form>
     </div>

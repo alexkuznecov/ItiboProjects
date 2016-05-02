@@ -12,7 +12,7 @@
                 <h:commandButton styleClass="item itemSubscribe transition" action="subscribed"/>
                 <h:commandButton styleClass="item itemUpdate transition" action="update"/>
                 <h:commandButton styleClass="item itemSearch transition" action="search"/>
-                <h:commandButton styleClass="item itemLogout transition" action="auth" />
+                <h:commandButton styleClass="item itemLogout transition" action="#{authBean.logout}" />
             </h:form>
         </div>
 </ui:composition>

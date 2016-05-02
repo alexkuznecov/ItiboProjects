@@ -55,6 +55,15 @@
         <property name="subscriberService" ref="subscriberService"/>
     </bean>
 
+    <bean id="filmService" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="service.FilmService" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="filmServiceImpl" class="service.impl.FilmServiceImpl">
+        <property name="filmService" ref="filmService" />
+    </bean>
+
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location">

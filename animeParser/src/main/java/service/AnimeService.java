@@ -3,6 +3,8 @@ package service;
 import domain.Anime;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 
 public interface AnimeService {
 
@@ -21,4 +23,13 @@ public interface AnimeService {
     @Insert("insert into anime(anime_name, anime_publicationDate, anime_site , user_id) values (#{name}, #{publicationDate}, #{site} ,#{user_id})")
     void insertAnime(@Param(value = "name") String name, @Param(value = "publicationDate") String publicationDate, @Param(value = "site") String site, @Param(value = "user_id") Integer user_id);
 
+    @Results(value = {
+            @Result(id = true, property = "id", column = "anime_id"),
+            @Result(property = "name", column = "anime_name"),
+            @Result(property = "publicationDate", column = "anime_publicationDate"),
+            @Result(property = "site", column = "anime_site"),
+            @Result(property = "newSeries", column = "anime_newSeries")
+    })
+    @Select("select * from updatedAnime where anime_id > #{beginId}")
+    List<Anime> getAnimeByBeginId(@Param(value = "beginId") Integer id);
 }

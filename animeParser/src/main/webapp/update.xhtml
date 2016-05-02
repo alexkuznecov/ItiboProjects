@@ -11,10 +11,77 @@
 <h:body>
     <ui:composition template="/pageTemplate.xhtml">
         <ui:define name="content">
-            <h:selectOneMenu id="choiseMenu">
-                <f:selectItem itemValue="1" itemLabel="Аниме" />
-                <f:selectItem itemValue="2" itemLabel="Фильмы" />
-            </h:selectOneMenu>
+
+            <h:form id="mye">//valueChangeListener
+                <h:selectOneMenu id="my" value="#{updateBean.selected}">
+                    <f:selectItem itemLabel="Select" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{updateBean.selectedChoise}" var="item" itemValue="#{item}" itemLabel="#{item}" />
+                    <f:ajax render="pggg" />
+                </h:selectOneMenu>
+
+                <h:panelGroup id="pggg" layout="block">
+                    <!--#{updateBean.update()}-->
+                    <h:dataTable id="pg" columns="4" border="2" value="#{updateBean.updatesAnime}" var="anime" rendered="#{updateBean.selected eq 'anime'}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name" />
+                            </f:facet>
+                            <h:outputText value="#{anime.name}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="NewSeries" />
+                            </f:facet>
+                            <h:outputText value="#{anime.newSeries}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Date" />
+                            </f:facet>
+                            <h:outputText value="#{anime.publicationDate}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Site" />
+                            </f:facet>
+                            <h:outputText value="#{anime.site}" />
+                        </h:column>
+                    </h:dataTable>
+
+                    <h:dataTable id="pg1" columns="4" border="2" value="#{updateBean.updatesFilms}" var="film" rendered="#{updateBean.selected eq 'film'}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name" />
+                            </f:facet>
+                            <h:outputText value="#{film.name}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Sound" />
+                            </f:facet>
+                            <h:outputText value="#{film.sound}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Quality" />
+                            </f:facet>
+                            <h:outputText value="#{film.videoQuality}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Site" />
+                            </f:facet>
+                            <h:outputText value="#{film.site}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Year" />
+                            </f:facet>
+                            <h:outputText value="#{film.year}" />
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
         </ui:define>
     </ui:composition>
 </h:body>

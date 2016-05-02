@@ -4,21 +4,21 @@ package controller;
 import domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import service.impl.UserServiceImpl;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-@Component(value = "authBean")
+@ManagedBean(name = "authBean")
 @SessionScoped
 public class AuthBin {
 
     private static final Logger LOG = LoggerFactory.getLogger(AuthBin.class);
 
-    @Autowired
+    @ManagedProperty("#{userServiceImpl}")
     private UserServiceImpl userService;
 
     private User user;
@@ -36,6 +36,10 @@ public class AuthBin {
         this.user = user;
     }
 
+    public void setUserService(UserServiceImpl userService) {
+        this.userService = userService;
+    }
+
     public String doLogin() {
 
         User user1 = userService.getUserByLoginAndPassword(user.getLogin(), user.getPassword());
@@ -48,6 +52,11 @@ public class AuthBin {
             user = user1;
             return "main";
         }
+    }
+
+    public String logout() {
+        user = new User();
+        return "auth";
     }
 
 }
