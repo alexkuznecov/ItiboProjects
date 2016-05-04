@@ -18,7 +18,9 @@
                             listener="#{searchFilm.findByPattern}"/>
                 </h:inputText>
                 <h:commandButton id="buttonSearchFilm" value="#{message.SearchFilmButton}" action="#{searchFilm.findFilm}"/>
-
+                <div class="outputMessage">
+                    <i>Показаны также результаты для</i>
+                </div>
                 <div class="hintTable">
                         <h:dataTable id="alternativeRes" columns="2" border="0" value="#{searchFilm.resultFromPattern}"
                                      var="film">
@@ -26,7 +28,7 @@
                                 <h:outputText value="#{film.name}"/>
                             </h:column>
                             <h:column>
-                                <h:commandLink styleClass="altResCol" action="#" value="#{message.Subscribe}"/>
+                                <h:commandLink styleClass="altResCol" action="#{searchFilm.subscribe(film.id)}" value="#{message.Subscribe}"/>
                             </h:column>
                         </h:dataTable>
                 </div>

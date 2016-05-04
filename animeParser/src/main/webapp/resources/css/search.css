@@ -6,6 +6,10 @@
     padding-left : 25%;
 }
 
+.outputMessage {
+    position : relative;
+}
+
 .altResCol:hover {
     background-color: red;
 }
