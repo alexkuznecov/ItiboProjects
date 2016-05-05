@@ -71,7 +71,7 @@ public class SearchFilmBean {
     }
 
     public void subscribe(int id) {
-        int p = 5;
+
     }
 
     public String getMessage() {
