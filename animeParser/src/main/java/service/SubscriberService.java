@@ -2,6 +2,7 @@ package service;
 
 
 import domain.Anime;
+import domain.Film;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -25,5 +26,19 @@ public interface SubscriberService {
             "   join anime_users on anime_users.user_id = #{id} " +
             "   and anime_users.anime_id = anime.anime_id")
     List<Anime> getUsersSubscribedAnimeByUserId(@Param(value = "id") Integer id);
+
+    @Results(value = {
+            @Result(id = true, property = "id", column = "id"),
+            @Result(property = "name", column = "name"),
+            @Result(property = "year", column = "year"),
+            @Result(property = "videoQuality", column = "quality"),
+            @Result(property = "sound", column = "sound"),
+            @Result(property = "site", column = "site")
+    })
+    @Select("select * " +
+            "   from updatedFilm" +
+            "   join film_users on film_users.user_id = #{id} " +
+            "   and film_users.film_id = updatedFilm.id")
+    List<Film> getUsersSubscribedFilmByUserId(@Param(value = "id") Integer id);
 
 }

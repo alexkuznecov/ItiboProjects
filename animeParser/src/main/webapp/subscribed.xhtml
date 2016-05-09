@@ -12,6 +12,76 @@
     <ui:composition template="/pageTemplate.xhtml">
         <ui:define name="content">
 
+            <h:form id="mye">
+                <h:selectOneMenu id="my" value="#{subscribe.selected}" valueChangeListener="#{subscribe.update}">
+                    <f:selectItem itemLabel="Select" itemValue="select" noSelectionOption="true" />
+                    <f:selectItems value="#{subscribe.selectedChoise}" var="item" itemValue="#{item}" itemLabel="#{item}" />
+                    <f:ajax render="pggg" />
+                </h:selectOneMenu>
+
+                <h:panelGroup id="pggg" layout="block">
+                    <h:dataTable id="pg" columns="4" border="2" value="#{subscribe.subscribedAnime}" var="anime" rendered="#{subscribe.selected eq 'anime'}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name" />
+                            </f:facet>
+                            <h:outputText value="#{anime.name}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="NewSeries" />
+                            </f:facet>
+                            <h:outputText value="#{anime.newSeries}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Date" />
+                            </f:facet>
+                            <h:outputText value="#{anime.publicationDate}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Site" />
+                            </f:facet>
+                            <h:outputText value="#{anime.site}" />
+                        </h:column>
+                    </h:dataTable>
+
+                    <h:dataTable id="pg1" columns="4" border="2" value="#{subscribe.subscribedFilms}" var="film" rendered="#{subscribe.selected eq 'film'}">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name" />
+                            </f:facet>
+                            <h:outputText value="#{film.name}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Sound" />
+                            </f:facet>
+                            <h:outputText value="#{film.sound}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Quality" />
+                            </f:facet>
+                            <h:outputText value="#{film.videoQuality}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Site" />
+                            </f:facet>
+                            <h:outputText value="#{film.site}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Year" />
+                            </f:facet>
+                            <h:outputText value="#{film.year}" />
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+
         </ui:define>
     </ui:composition>
 </h:body>

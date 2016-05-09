@@ -2,6 +2,7 @@ package service.impl;
 
 
 import domain.Anime;
+import domain.Film;
 import service.SubscriberService;
 
 import java.util.List;
@@ -24,5 +25,9 @@ public class SubscriberServiceImpl {
 
     public List<Anime> getUsersSubscribedAnimeByUserId(Integer id) {
         return subscriberService.getUsersSubscribedAnimeByUserId(id);
+    }
+
+    public List<Film> getUsersSubscribedFilmByUserId(Integer id) {
+        return subscriberService.getUsersSubscribedFilmByUserId(id);
     }
 }
