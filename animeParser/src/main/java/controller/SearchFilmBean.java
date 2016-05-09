@@ -86,7 +86,9 @@ public class SearchFilmBean {
             renderMessageShowResult = true;
             prefix = "К сожелению, ничего не найдено. Попробуйте позже";
             userInputCorrected = prefix;
-
+            for (int i = 0; i < userInputRight.size(); i++) {
+                filmService.insertFilmForSearch(userInputRight.get(i), authBin.getUser().getId());
+            }
         }
     }
 

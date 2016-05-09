@@ -30,4 +30,7 @@ public interface FilmService {
 
     @Insert("insert into film_users(user_id, film_id) values (#{userId}, #{filmId})")
     void subscribeUser(@Param(value = "userId") Integer userId, @Param(value = "filmId") Integer filmId);
+
+    @Insert("insert into filmForSearch_user(film_name, user_id) values (#{film_name}, #{userId})")
+    void insertFilmForSearch(@Param(value = "film_name") String filmName, @Param(value = "userId") Integer userId);
 }

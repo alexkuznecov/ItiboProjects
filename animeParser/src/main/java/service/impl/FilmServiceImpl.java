@@ -28,4 +28,8 @@ public class FilmServiceImpl {
     public void subscribeUser(Integer userId, Integer filmId) {
         filmService.subscribeUser(userId,filmId);
     }
+
+    public void insertFilmForSearch(String filmName, Integer userId) {
+        filmService.insertFilmForSearch(filmName, userId);
+    }
 }
