@@ -2,7 +2,7 @@
 <Configuration>
     <Appenders>
         <Console name="CONSOLE_APPENDER" target="SYSTEM_OUT">
-            <PatternLayout pattern="%c{1.}:%line [%p] %u %m%n"/>
+            <PatternLayout pattern="%highlight{%c{1}:%line [%p] %d{dd MMM yyyy HH:mm:ss:SSS} %m%n}{FATAL=darkred, ERROR=orange, WARN=pink, INFO=magenta, DEBUG=yellow, TRACE=green}"/>
         </Console>
     </Appenders>
 

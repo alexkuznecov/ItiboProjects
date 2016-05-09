@@ -12,25 +12,29 @@
     <ui:composition template="/pageTemplate.xhtml">
         <ui:define name="content">
             <h:form id="searchForm">
+                <h:message id="subscribedMessage" for="inputFilmName" infoClass="infoMessage"/>
                 <h:outputLabel id="inputFilmText" value="#{message.InputFilmName}"/>
                 <h:inputText id="inputFilmName" value="#{searchFilm.message}">
-                    <f:ajax render="alternativeRes" execute="inputFilmName" event="keyup"
+                    <f:ajax render="alternativeRes messageShowRes" execute="inputFilmName" event="keyup"
                             listener="#{searchFilm.findByPattern}"/>
                 </h:inputText>
-                <h:commandButton id="buttonSearchFilm" value="#{message.SearchFilmButton}" action="#{searchFilm.findFilm}"/>
+                <h:commandButton id="buttonSearchFilm" value="#{message.SearchFilmButton}"
+                                 action="#{searchFilm.findFilm}"/>
+
                 <div class="outputMessage">
-                    <i>Показаны также результаты для</i>
+                    <h:outputText id="messageShowRes" value="#{searchFilm.userInputCorrected}"/>
                 </div>
                 <div class="hintTable">
-                        <h:dataTable id="alternativeRes" columns="2" border="0" value="#{searchFilm.resultFromPattern}"
-                                     var="film">
-                            <h:column>
-                                <h:outputText value="#{film.name}"/>
-                            </h:column>
-                            <h:column>
-                                <h:commandLink styleClass="altResCol" action="#{searchFilm.subscribe(film.id)}" value="#{message.Subscribe}"/>
-                            </h:column>
-                        </h:dataTable>
+                    <h:dataTable id="alternativeRes" columns="2" border="0" value="#{searchFilm.resultFromPattern}"
+                                 var="film">
+                        <h:column>
+                            <h:outputText value="#{film.name}"/>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink styleClass="altResCol" action="#{searchFilm.subscribe(film.id)}"
+                                           value="#{message.Subscribe}"/>
+                        </h:column>
+                    </h:dataTable>
                 </div>
             </h:form>
         </ui:define>

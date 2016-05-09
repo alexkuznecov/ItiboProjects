@@ -35,7 +35,9 @@ public class SpellerUtility {
             String newValue = sElem.text();
             userInput = userInput.replace(replacment, newValue);
         }
-        result.add(userInput);
+        if (elem.size() != 0) {
+            result.add(userInput);
+        }
         return result;
     }
 

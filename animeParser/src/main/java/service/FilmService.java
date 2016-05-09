@@ -1,10 +1,7 @@
 package service;
 
 import domain.Film;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -27,4 +24,10 @@ public interface FilmService {
     })
     @Select("select id,name from updatedFilm where name like #{pattern} limit 10")
     List<Film> getFilmByPattern(@Param(value = "pattern") String pattern);
+
+    @Select("select id from film_users where film_id = #{filmId} and user_id = #{userId}")
+    Integer getRelationIdIfSubscribed(@Param(value = "userId") Integer userId, @Param(value = "filmId") Integer filmId);
+
+    @Insert("insert into film_users(user_id, film_id) values (#{userId}, #{filmId})")
+    void subscribeUser(@Param(value = "userId") Integer userId, @Param(value = "filmId") Integer filmId);
 }

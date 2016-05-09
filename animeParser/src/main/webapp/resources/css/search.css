@@ -13,3 +13,8 @@
 .altResCol:hover {
     background-color: red;
 }
+
+.infoMessage {
+    position: relative;
+    color : darkblue;
+}

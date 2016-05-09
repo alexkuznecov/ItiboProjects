@@ -20,4 +20,12 @@ public class FilmServiceImpl {
     public List<Film> getFilmByPattern(String pattern) {
         return filmService.getFilmByPattern(pattern);
     }
+
+    public Integer getRelationIdIfSubscribed(Integer userId, Integer filmId) {
+        return filmService.getRelationIdIfSubscribed(userId, filmId);
+    }
+
+    public void subscribeUser(Integer userId, Integer filmId) {
+        filmService.subscribeUser(userId,filmId);
+    }
 }
