@@ -6,6 +6,7 @@ public enum VideoQuality {
     TS(1,"TS"),
     DVDRIP(2,"DVDRIP"),
     SATRIP(3,"SATRIP"),
+    WEBRIP(4,"WEBRIP"),
     WEBDLRIP(4,"WEBDLRIP"),
     HDTVRIP(5,"HDTVRIP"),
     HDRIP(6,"HDRIP"),

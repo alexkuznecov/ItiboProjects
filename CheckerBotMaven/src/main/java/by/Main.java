@@ -5,6 +5,7 @@ import by.services.FilmService;
 import by.services.SearchService;
 import by.util.AnimeUpdateStarter;
 import by.util.FilmUpdateStarter;
+import by.util.SearchStarter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -27,7 +28,8 @@ public class Main {
             FilmUpdateStarter filmUpdateStarter = new FilmUpdateStarter(filmService, searchService);
             filmUpdateStarter.startUpdate();
 
-
+            SearchStarter searchStarter = new SearchStarter(filmService);
+            searchStarter.searchFilms();
             try {
                 Thread.sleep(3600000);
             } catch (InterruptedException e) {
