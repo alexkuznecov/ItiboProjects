@@ -1,7 +1,5 @@
 package domain;
 
-import util.VideoQuality;
-
 public class Film {
 
     private Integer id;
