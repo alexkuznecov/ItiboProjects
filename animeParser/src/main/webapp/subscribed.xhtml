@@ -21,110 +21,113 @@
 
                 <h:panelGroup id="pggg" layout="block">
                     <h:commandButton value="Просмотрено" action="#{subscribe.resetUpdates}" rendered="#{subscribe.selected eq 'updatedanime' || subscribe.selected eq 'updatedfilm'}"/>
-
-                    <h:dataTable id="pg" columns="2" border="2" value="#{subscribe.subscribedAnime}" var="anime" rendered="#{subscribe.selected eq 'anime'}">
+                    <h:outputLabel value="Аниме на которые вы подписаны" rendered="#{subscribe.selected eq 'anime'}" />
+                    <h:outputLabel value="Фильмы на которые вы подписаны" rendered="#{subscribe.selected eq 'film'}" />
+                    <h:outputLabel value="Обновления аниме" rendered="#{subscribe.selected eq 'updatedanime'}" />
+                    <h:outputLabel value="Обновления фильмов" rendered="#{subscribe.selected eq 'updatedfilm'}" />
+                    <h:dataTable id="pg" columns="2" border="2" value="#{subscribe.subscribedAnime}" var="anime" bgcolor="#B2BECD" rendered="#{subscribe.selected eq 'anime'}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Name" />
+                                <h:outputText value="#{message.AnimeName}" />
                             </f:facet>
                             <h:outputText value="#{anime.name}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Site" />
+                                <h:outputText value="#{message.AnimeSite}" />
                             </f:facet>
                             <h:outputText value="#{anime.site}" />
                         </h:column>
                     </h:dataTable>
 
-                    <h:dataTable id="pg1" columns="4" border="2" value="#{subscribe.subscribedFilms}" var="film" rendered="#{subscribe.selected eq 'film'}">
+                    <h:dataTable id="pg1" columns="4" border="2" value="#{subscribe.subscribedFilms}" var="film" bgcolor="#B2BECD" rendered="#{subscribe.selected eq 'film'}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Name" />
+                                <h:outputText value="#{message.AnimeName}" />
                             </f:facet>
                             <h:outputText value="#{film.name}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Sound" />
+                                <h:outputText value="#{message.Sound}" />
                             </f:facet>
                             <h:outputText value="#{film.sound}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Quality" />
+                                <h:outputText value="#{message.Video}" />
                             </f:facet>
                             <h:outputText value="#{film.videoQuality}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Site" />
+                                <h:outputText value="#{message.AnimeSite}" />
                             </f:facet>
                             <h:outputText value="#{film.site}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Year" />
+                                <h:outputText value="#{message.Year}" />
                             </f:facet>
                             <h:outputText value="#{film.year}" />
                         </h:column>
                     </h:dataTable>
 
-                    <h:dataTable id="pg2" columns="4" border="2" value="#{subscribe.subscribedAnime}" var="anime" rendered="#{subscribe.selected eq 'updatedanime'}">
+                    <h:dataTable id="pg2" columns="4" border="2" value="#{subscribe.subscribedAnime}" var="anime" bgcolor="#B2BECD" rendered="#{subscribe.selected eq 'updatedanime'}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Name" />
+                                <h:outputText value="#{message.AnimeName}" />
                             </f:facet>
                             <h:outputText value="#{anime.name}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="NewSeries" />
+                                <h:outputText value="#{message.AnimeNewSeries}" />
                             </f:facet>
                             <h:outputText value="#{anime.newSeries}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Date" />
+                                <h:outputText value="#{message.AnimeDate}" />
                             </f:facet>
                             <h:outputText value="#{anime.publicationDate}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Site" />
+                                <h:outputText value="#{message.AnimeSite}" />
                             </f:facet>
                             <h:outputText value="#{anime.site}" />
                         </h:column>
                     </h:dataTable>
 
-                    <h:dataTable id="pg3" columns="4" border="2" value="#{subscribe.subscribedFilms}" var="film" rendered="#{subscribe.selected eq 'updatedfilm'}">
+                    <h:dataTable id="pg3" columns="4" border="2" value="#{subscribe.subscribedFilms}" var="film" bgcolor="#B2BECD" rendered="#{subscribe.selected eq 'updatedfilm'}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Name" />
+                                <h:outputText value="#{message.AnimeName}" />
                             </f:facet>
                             <h:outputText value="#{film.name}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Sound" />
+                                <h:outputText value="#{message.Sound}" />
                             </f:facet>
                             <h:outputText value="#{film.sound}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Quality" />
+                                <h:outputText value="#{message.Video}" />
                             </f:facet>
                             <h:outputText value="#{film.videoQuality}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Site" />
+                                <h:outputText value="#{message.AnimeSite}" />
                             </f:facet>
                             <h:outputText value="#{film.site}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Year" />
+                                <h:outputText value="#{message.Year}" />
                             </f:facet>
                             <h:outputText value="#{film.year}" />
                         </h:column>

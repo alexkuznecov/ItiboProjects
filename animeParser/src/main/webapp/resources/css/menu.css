@@ -19,32 +19,32 @@
 }
 
 .itemHome {
-    background: url("/resources/images/menu/home.ico") no-repeat;
+    background: url("/resources/images/menu/home3.ico") no-repeat;
     background-size: cover;
 }
 
 .itemProfile {
-    background: url("/resources/images/menu/profile.ico") no-repeat;
+    background: url("/resources/images/menu/profile3.ico") no-repeat;
     background-size: cover;
 }
 
 .itemSubscribe {
-    background: url("/resources/images/menu/subscribe.ico") no-repeat;
+    background: url("/resources/images/menu/subscribe3.ico") no-repeat;
     background-size: cover;
 }
 
 .itemUpdate {
-    background: url("/resources/images/menu/updatesAnime.ico") no-repeat;
+    background: url("/resources/images/menu/updatesAnime3.ico") no-repeat;
     background-size: cover;
 }
 
 .itemSearch {
-    background: url("/resources/images/menu/updatesFilm.ico") no-repeat;
+    background: url("/resources/images/menu/updatesFilm3.ico") no-repeat;
     background-size: cover;
 }
 
 .itemLogout {
-    background: url("/resources/images/menu/logout.ico") no-repeat;
+    background: url("/resources/images/menu/logout3.ico") no-repeat;
     background-size: cover;
 }
 

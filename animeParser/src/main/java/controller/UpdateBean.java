@@ -114,12 +114,22 @@ public class UpdateBean {
         LOG.info("Started" + authBin.getUser().getId());
         LastUpdate lastUpdate = searchService.getLastUpdatesIdByUserId(authBin.getUser().getId());
         updatesAnime = animeService.getAnimeByBeginId(lastUpdate.getAnimeId());
+        if (updatesAnime.size() == 0) {
+            Anime anime = new Anime();
+            anime.setName("Обновлений нет");
+            updatesAnime.add(anime);
+        }
     }
 
     public void updateFilm() {
         LOG.info("Started" + authBin.getUser().getId());
         LastUpdate lastUpdate = searchService.getLastUpdatesIdByUserId(authBin.getUser().getId());
         updatesFilms = filmService.getFilmByBeginId(lastUpdate.getFilmId());
+        if (updatesFilms.size() == 0) {
+            Film film = new Film();
+            film.setName("Обновлений нет");
+            updatesFilms.add(film);
+        }
     }
 
     public void subscribeOnAnime(String name, Integer id) {

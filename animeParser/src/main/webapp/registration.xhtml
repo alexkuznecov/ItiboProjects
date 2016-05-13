@@ -19,51 +19,56 @@
 
         </ui:define>
         <ui:define name="content">
-            <h:form action="#" name="regForm">
-                <h:panelGrid id="regData" columns="3" border="0" cellpadding="9" cellspacing="9">
+            <div class="contentReg">
+                <h:form action="#" name="regForm">
+                    <h:panelGrid id="regData" columns="3" border="0" cellpadding="9" cellspacing="9">
 
-                    <h:outputLabel value="Введите ваше имя"/>
-                    <h:inputText id="username" value="#{regBean.name}" required="true" requiredMessage="Name required">
-                        <f:validator validatorId="util.validator.NameAndSurnameValidator" />
-                    </h:inputText>
-                    <h:message for="username" style="color:red"/>
+                        <h:outputLabel value="Введите ваше имя"/>
+                        <h:inputText id="username" value="#{regBean.name}" required="true"
+                                     requiredMessage="Name required">
+                            <f:validator validatorId="util.validator.NameAndSurnameValidator"/>
+                        </h:inputText>
+                        <h:message for="username" style="color:red"/>
 
-                    <h:outputLabel value="Введите вашу фамилию"/>
-                    <h:inputText id="surname" value="#{regBean.surname}" required="true" requiredMessage="Surname required">
-                        <f:validator validatorId="util.validator.NameAndSurnameValidator" />
-                    </h:inputText>
-                    <h:message for="surname" style="color:red"/>
+                        <h:outputLabel value="Введите вашу фамилию"/>
+                        <h:inputText id="surname" value="#{regBean.surname}" required="true"
+                                     requiredMessage="Surname required">
+                            <f:validator validatorId="util.validator.NameAndSurnameValidator"/>
+                        </h:inputText>
+                        <h:message for="surname" style="color:red"/>
 
-                    <h:outputLabel value="Введите вашу адресс электронной почты"/>
-                    <h:inputText id="email" value="#{regBean.email}" required="true" requiredMessage="Email required">
-                        <f:validator validatorId="util.validator.EmailValidator" />
-                    </h:inputText>
-                    <h:message for="email" style="color:red"/>
+                        <h:outputLabel value="Введите вашу адресс электронной почты"/>
+                        <h:inputText id="email" value="#{regBean.email}" required="true"
+                                     requiredMessage="Email required">
+                            <f:validator validatorId="util.validator.EmailValidator"/>
+                        </h:inputText>
+                        <h:message for="email" style="color:red"/>
 
-                    <h:outputLabel value="Введите ваш логин"/>
-                    <h:inputText id="login" value="#{regBean.login_reg}" required="true"
-                                 requiredMessage="Login required" binding="#{regBean.login}">
-                        <f:validator validatorId="util.validator.LoginValidator" />
-                    </h:inputText>
-                    <h:message for="login" style="color:red"/>
+                        <h:outputLabel value="Введите ваш логин"/>
+                        <h:inputText id="login" value="#{regBean.login_reg}" required="true"
+                                     requiredMessage="Login required" binding="#{regBean.login}">
+                            <f:validator validatorId="util.validator.LoginValidator"/>
+                        </h:inputText>
+                        <h:message for="login" style="color:red"/>
 
-                    <h:outputLabel value="Введите пароль"/>
-                    <h:inputSecret id="password" value="#{regBean.password_reg}" required="true"
-                                   requiredMessage="Password required">
-                        <f:validator validatorId="util.validator.PasswordValidator" />
-                    </h:inputSecret>
-                    <h:message for="password" style="color:red"/>
+                        <h:outputLabel value="Введите пароль"/>
+                        <h:inputSecret id="password" value="#{regBean.password_reg}" required="true"
+                                       requiredMessage="Password required">
+                            <f:validator validatorId="util.validator.PasswordValidator"/>
+                        </h:inputSecret>
+                        <h:message for="password" style="color:red"/>
 
-                    <h:outputLabel value="Повтрите пароль"/>
-                    <h:inputSecret id="confirmpassword" value="#{regBean.confirmPassword}" required="true"
-                                   requiredMessage="Confirm Password" binding="#{regBean.confirmpassword}"/>
-                    <h:message for="confirmpassword" style="color:red"/>
+                        <h:outputLabel value="Повтрите пароль"/>
+                        <h:inputSecret id="confirmpassword" value="#{regBean.confirmPassword}" required="true"
+                                       requiredMessage="Confirm Password" binding="#{regBean.confirmpassword}"/>
+                        <h:message for="confirmpassword" style="color:red"/>
 
-                    <h:commandButton value="Зарегестрироваться" type="submit" action="#{regBean.registration}"/>
-                    <h:commandButton value="Сбросить" type="reset"/>
+                        <h:commandButton value="Зарегестрироваться" type="submit" action="#{regBean.registration}"/>
+                        <h:commandButton value="Сбросить" type="reset"/>
 
-                </h:panelGrid>
-            </h:form>
+                    </h:panelGrid>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 </h:body>

@@ -14,7 +14,7 @@
 
             <h:form id="mye">
                 <h:selectOneMenu id="my" value="#{updateBean.selected}" valueChangeListener="#{updateBean.update}">
-                    <f:selectItem itemLabel="Select" itemValue="select" noSelectionOption="true" />
+                    <f:selectItem itemLabel="Выберите" itemValue="select" noSelectionOption="true" />
                     <f:selectItems value="#{updateBean.selectedChoise}" var="item" itemValue="#{item}" itemLabel="#{item}" />
                     <f:ajax render="pggg" />
                 </h:selectOneMenu>
@@ -22,28 +22,32 @@
                 <h:commandButton value="Просмотрено" action="#{updateBean.resetUpdate}" />
 
                 <h:panelGroup id="pggg" layout="block">
+
+                    <h:outputLabel value="Обновления аниме" rendered="#{updateBean.selected eq 'anime'}" />
+                    <h:outputLabel value="Обновления фильмов" rendered="#{updateBean.selected eq 'film'}" />
+
                     <h:dataTable id="pg" columns="5" border="2" value="#{updateBean.updatesAnime}" var="anime" bgcolor="#B2BECD" rendered="#{updateBean.selected eq 'anime'}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Name" />
+                                <h:outputText value="#{message.AnimeName}" />
                             </f:facet>
                             <h:outputText value="#{anime.name}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="NewSeries" />
+                                <h:outputText value="#{message.AnimeNewSeries}" />
                             </f:facet>
                             <h:outputText value="#{anime.newSeries}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Date" />
+                                <h:outputText value="#{message.AnimeDate}" />
                             </f:facet>
                             <h:outputText value="#{anime.publicationDate}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Site" />
+                                <h:outputText value="#{message.AnimeSite}" />
                             </f:facet>
                             <h:outputText value="#{anime.site}" />
                         </h:column>
@@ -58,31 +62,31 @@
                     <h:dataTable id="pg1" columns="5" border="2" value="#{updateBean.updatesFilms}" bgcolor="#B2BECD" var="film" rendered="#{updateBean.selected eq 'film'}">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Name" />
+                                <h:outputText value="#{message.AnimeName}" />
                             </f:facet>
                             <h:outputText value="#{film.name}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Sound" />
+                                <h:outputText value="#{message.Sound}" />
                             </f:facet>
                             <h:outputText value="#{film.sound}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Quality" />
+                                <h:outputText value="#{message.Video}" />
                             </f:facet>
                             <h:outputText value="#{film.videoQuality}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Site" />
+                                <h:outputText value="#{message.AnimeSite}" />
                             </f:facet>
                             <h:outputText value="#{film.site}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Year" />
+                                <h:outputText value="#{message.Year}" />
                             </f:facet>
                             <h:outputText value="#{film.year}" />
                         </h:column>

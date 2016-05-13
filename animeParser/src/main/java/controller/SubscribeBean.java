@@ -61,18 +61,38 @@ public class SubscribeBean {
 
     public void updateAnime() {
         subscribedAnime = subscriberService.getUsersSubscribedAnimeByUserId(authBin.getUser().getId());
+        if (subscribedAnime.size() == 0) {
+            Anime anime = new Anime();
+            anime.setName("Обновлений нет");
+            subscribedAnime.add(anime);
+        }
     }
 
     public void updateFilm() {
         subscribedFilms = subscriberService.getUsersSubscribedFilmByUserId(authBin.getUser().getId());
+        if (subscribedFilms.size() == 0) {
+            Film film = new Film();
+            film.setName("Обновлений нет");
+            subscribedFilms.add(film);
+        }
     }
 
     public void updatedAnimeUpdatedValues() {
         subscribedAnime = subscriberService.getUsersSubscribedAnimeByUserIdIfUpdated(authBin.getUser().getId());
+        if (subscribedAnime.size() == 0) {
+            Anime anime = new Anime();
+            anime.setName("Обновлений нет");
+            subscribedAnime.add(anime);
+        }
     }
 
     public void updatedFilmUpdatedValues() {
         subscribedFilms = subscriberService.getUsersSubscribedFilmByUserIdIfUpdated(authBin.getUser().getId());
+        if (subscribedFilms.size() == 0) {
+            Film film = new Film();
+            film.setName("Обновлений нет");
+            subscribedFilms.add(film);
+        }
     }
 
     public void resetUpdates() {
