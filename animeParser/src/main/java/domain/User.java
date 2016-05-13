@@ -20,6 +20,18 @@ public class User {
 
     private List<Film> userSubscribedFilm;
 
+    public User() {
+
+    }
+
+    public User(String name, String surname, String email, String login, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }

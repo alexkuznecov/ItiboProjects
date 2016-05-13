@@ -25,4 +25,16 @@ public class AnimeServiceImpl {
     public List<Anime> getAnimeByBeginId(Integer id) {
         return animeService.getAnimeByBeginId(id);
     }
+
+    public  Integer getLastAnimeId() {
+        return animeService.getLastAnimeId();
+    }
+
+    public Integer getRelationIdIfSubscribed(Integer userId, String animeName) {
+        return animeService.getRelationIdIfSubscribed(userId, animeName);
+    }
+
+    public void subscribeUser(Integer userId, String animeName) {
+        animeService.subscribeUser(userId, animeName);
+    }
 }

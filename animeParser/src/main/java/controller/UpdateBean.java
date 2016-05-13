@@ -121,4 +121,16 @@ public class UpdateBean {
         LastUpdate lastUpdate = searchService.getLastUpdatesIdByUserId(authBin.getUser().getId());
         updatesFilms = filmService.getFilmByBeginId(lastUpdate.getFilmId());
     }
+
+    public void subscribeOnAnime(String name) {
+        if (animeService.getRelationIdIfSubscribed(authBin.getUser().getId(), name) == null) {
+            animeService.subscribeUser(authBin.getUser().getId(),name);
+        }
+    }
+
+    public void subscribeOnFilm(int id) {
+        if (filmService.getRelationIdIfSubscribed(authBin.getUser().getId(), id) == null) {
+            filmService.subscribeUser(authBin.getUser().getId(), id);
+        }
+    }
 }

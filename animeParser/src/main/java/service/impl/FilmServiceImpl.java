@@ -32,4 +32,8 @@ public class FilmServiceImpl {
     public void insertFilmForSearch(String filmName, Integer userId) {
         filmService.insertFilmForSearch(filmName, userId);
     }
+
+    public Integer getLastFilmId() {
+        return filmService.getLastFilmId();
+    }
 }

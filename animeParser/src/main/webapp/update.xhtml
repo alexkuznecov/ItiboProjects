@@ -19,8 +19,10 @@
                     <f:ajax render="pggg" />
                 </h:selectOneMenu>
 
+                <h:commandButton value="Просмотрено" action="#" />
+
                 <h:panelGroup id="pggg" layout="block">
-                    <h:dataTable id="pg" columns="4" border="2" value="#{updateBean.updatesAnime}" var="anime" rendered="#{updateBean.selected eq 'anime'}">
+                    <h:dataTable id="pg" columns="5" border="2" value="#{updateBean.updatesAnime}" var="anime" bgcolor="#B2BECD" rendered="#{updateBean.selected eq 'anime'}">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Name" />
@@ -45,9 +47,15 @@
                             </f:facet>
                             <h:outputText value="#{anime.site}" />
                         </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Подписка" />
+                            </f:facet>
+                            <h:commandLink value="#{message.Subscribe}" action="#{updateBean.subscribeOnAnime(anime.name)}"/>
+                        </h:column>
                     </h:dataTable>
 
-                    <h:dataTable id="pg1" columns="4" border="2" value="#{updateBean.updatesFilms}" var="film" rendered="#{updateBean.selected eq 'film'}">
+                    <h:dataTable id="pg1" columns="5" border="2" value="#{updateBean.updatesFilms}" bgcolor="#B2BECD" var="film" rendered="#{updateBean.selected eq 'film'}">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="Name" />
@@ -77,6 +85,12 @@
                                 <h:outputText value="Year" />
                             </f:facet>
                             <h:outputText value="#{film.year}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Подписка" />
+                            </f:facet>
+                            <h:commandLink value="#{message.Subscribe}" action="#{updateBean.subscribeOnFilm(film.id)}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>

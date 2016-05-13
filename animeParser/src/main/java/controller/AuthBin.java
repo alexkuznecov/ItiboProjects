@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.util.Map;
 
 @ManagedBean(name = "authBean")
 @SessionScoped
@@ -50,12 +51,18 @@ public class AuthBin {
             return null;
         } else {
             user = user1;
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            Map<String, Object> sesionMap = facesContext.getExternalContext().getSessionMap();
+            sesionMap.put("Auth", 1);
             return "main";
         }
     }
 
     public String logout() {
         user = new User();
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        Map<String, Object> sesionMap = facesContext.getExternalContext().getSessionMap();
+        sesionMap.remove("Auth");
         return "auth";
     }
 

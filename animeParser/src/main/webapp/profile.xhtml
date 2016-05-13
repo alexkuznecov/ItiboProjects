@@ -11,7 +11,24 @@
 <h:body>
     <ui:composition template="/pageTemplate.xhtml">
         <ui:define name="content">
+            <h:form>
+                <h:commandButton action="#{profileBean.getInfo}" value="Обновить"/>
 
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Имя: " />
+                    <h:outputLabel value="#{profileBean.userProfile.name}" />
+
+                    <h:outputLabel value="Фамилия: " />
+                    <h:outputLabel value="#{profileBean.userProfile.surname}" />
+
+                    <h:outputLabel value="Email: " />
+                    <h:outputLabel value="#{profileBean.userProfile.email}" />
+
+                    <h:outputLabel value="Логин: " />
+                    <h:outputLabel value="#{profileBean.userProfile.login}" />
+                </h:panelGrid>
+
+            </h:form>
         </ui:define>
     </ui:composition>
 </h:body>

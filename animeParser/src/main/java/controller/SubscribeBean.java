@@ -40,6 +40,8 @@ public class SubscribeBean {
         selectedChoise = new ArrayList<String>();
         selectedChoise.add("anime");
         selectedChoise.add("film");
+        selectedChoise.add("updatedanime");
+        selectedChoise.add("updatedfilm");
     }
 
     public void update(ValueChangeEvent e) {
@@ -47,6 +49,10 @@ public class SubscribeBean {
             updateAnime();
         } else if (e.getNewValue().equals("film")) {
             updateFilm();
+        } else if (e.getNewValue().equals("updatedanime")) {
+            updatedAnimeUpdatedValues();
+        } else if (e.getNewValue().equals("updatedfilm")){
+            updatedFilmUpdatedValues();
         } else if (e.getNewValue().equals("select")) {
             subscribedAnime = null;
             subscribedFilms = null;
@@ -59,6 +65,14 @@ public class SubscribeBean {
 
     public void updateFilm() {
         subscribedFilms = subscriberService.getUsersSubscribedFilmByUserId(authBin.getUser().getId());
+    }
+
+    public void updatedAnimeUpdatedValues() {
+        subscribedAnime = subscriberService.getUsersSubscribedAnimeByUserIdIfUpdated(authBin.getUser().getId());
+    }
+
+    public void updatedFilmUpdatedValues() {
+        subscribedFilms = subscriberService.getUsersSubscribedFilmByUserIdIfUpdated(authBin.getUser().getId());
     }
 
     public List<Anime> getSubscribedAnime() {

@@ -32,4 +32,13 @@ public interface AnimeService {
     })
     @Select("select * from updatedAnime where anime_id > #{beginId}")
     List<Anime> getAnimeByBeginId(@Param(value = "beginId") Integer id);
+
+    @Select("select anime_id from updatedAnime order by anime_id desc limit 1")
+    Integer getLastAnimeId();
+
+    @Select("select id from anime_users where user_id = #{userId} and anime_name = #{animeName}")
+    Integer getRelationIdIfSubscribed(@Param(value = "userId") Integer userId, @Param(value = "animeName") String animeName);
+
+    @Insert("insert into anime_users(anime_name, user_id) values (#{animeName}, #{userId})")
+    void subscribeUser(@Param(value = "userId") Integer userId, @Param(value = "animeName") String animeName);
 }

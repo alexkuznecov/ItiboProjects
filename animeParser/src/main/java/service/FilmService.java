@@ -33,4 +33,7 @@ public interface FilmService {
 
     @Insert("insert into filmForSearch_user(film_name, user_id) values (#{film_name}, #{userId})")
     void insertFilmForSearch(@Param(value = "film_name") String filmName, @Param(value = "userId") Integer userId);
+
+    @Select("select id from updatedFilm order by id desc limit 1")
+    Integer getLastFilmId();
 }

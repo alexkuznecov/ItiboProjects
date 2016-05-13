@@ -14,12 +14,14 @@
 
             <h:form id="mye">
                 <h:selectOneMenu id="my" value="#{subscribe.selected}" valueChangeListener="#{subscribe.update}">
-                    <f:selectItem itemLabel="Select" itemValue="select" noSelectionOption="true" />
+                    <f:selectItem itemLabel="Выберите" itemValue="select" noSelectionOption="true" />
                     <f:selectItems value="#{subscribe.selectedChoise}" var="item" itemValue="#{item}" itemLabel="#{item}" />
                     <f:ajax render="pggg" />
                 </h:selectOneMenu>
 
                 <h:panelGroup id="pggg" layout="block">
+                    <h:commandButton value="Просмотрено" action="#" rendered="#{subscribe.selected eq 'updatedanime' || subscribe.selected eq 'updatedfilm'}"/>
+
                     <h:dataTable id="pg" columns="4" border="2" value="#{subscribe.subscribedAnime}" var="anime" rendered="#{subscribe.selected eq 'anime'}">
                         <h:column>
                             <f:facet name="header">
