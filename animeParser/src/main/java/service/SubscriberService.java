@@ -19,7 +19,7 @@ public interface SubscriberService {
     @Select("select updatedAnime.anime_id, updatedAnime.anime_name, updatedAnime.anime_newSeries ,updatedAnime.anime_publicationDate, updatedAnime.anime_site " +
             "   from updatedAnime" +
             "   join anime_users on anime_users.user_id = #{id} " +
-            "   and anime_users.anime_name = updatedAnime.anime_name")
+            "   and anime_users.updateId = updatedAnime.anime_id")
     List<Anime> getUsersSubscribedAnimeByUserId(@Param(value = "id") Integer id);
 
     @Results(value = {
@@ -32,7 +32,7 @@ public interface SubscriberService {
     @Select("select updatedAnime.anime_id, updatedAnime.anime_name, updatedAnime.anime_newSeries , updatedAnime.anime_publicationDate, updatedAnime.anime_site " +
             "   from updatedAnime" +
             "   join anime_users on anime_users.user_id = #{id} " +
-            "   and anime_users.anime_name = updatedAnime.anime_name where anime_users.updated = 1")
+            "   and anime_users.updateId = updatedAnime.anime_id where anime_users.updated = 1")
     List<Anime> getUsersSubscribedAnimeByUserIdIfUpdated(@Param(value = "id") Integer id);
 
     @Results(value = {
@@ -62,5 +62,11 @@ public interface SubscriberService {
             "   join film_users on film_users.user_id = #{id} " +
             "   and film_users.film_id = updatedFilm.id where film_users.updated = 1")
     List<Film> getUsersSubscribedFilmByUserIdIfUpdated(@Param(value = "id") Integer id);
+
+    @Update("update anime_users set updated=0 where user_id = #{userId}")
+    void updateReadedAnime(@Param(value = "userId") Integer userId);
+
+    @Update("update film_users set updated=0 where user_id = #{userId}")
+    void updateReadedFilm(@Param(value = "userId") Integer userId);
 
 }

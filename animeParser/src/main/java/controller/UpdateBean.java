@@ -122,9 +122,9 @@ public class UpdateBean {
         updatesFilms = filmService.getFilmByBeginId(lastUpdate.getFilmId());
     }
 
-    public void subscribeOnAnime(String name) {
+    public void subscribeOnAnime(String name, Integer id) {
         if (animeService.getRelationIdIfSubscribed(authBin.getUser().getId(), name) == null) {
-            animeService.subscribeUser(authBin.getUser().getId(),name);
+            animeService.subscribeUser(authBin.getUser().getId(),name, id);
         }
     }
 
@@ -132,5 +132,17 @@ public class UpdateBean {
         if (filmService.getRelationIdIfSubscribed(authBin.getUser().getId(), id) == null) {
             filmService.subscribeUser(authBin.getUser().getId(), id);
         }
+    }
+
+    public void resetUpdate() {
+        int animeId = animeService.getLastAnimeId();
+        int filmId = filmService.getLastFilmId();
+        LastUpdate lu = new LastUpdate();
+        lu.setUserId(authBin.getUser().getId());
+        lu.setAnimeId(animeId);
+        lu.setFilmId(filmId);
+        searchService.updateLastUpdates(lu);
+        updateAnime();
+        updateFilm();
     }
 }

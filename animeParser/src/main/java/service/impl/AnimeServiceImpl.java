@@ -34,7 +34,7 @@ public class AnimeServiceImpl {
         return animeService.getRelationIdIfSubscribed(userId, animeName);
     }
 
-    public void subscribeUser(Integer userId, String animeName) {
-        animeService.subscribeUser(userId, animeName);
+    public void subscribeUser(Integer userId, String animeName, Integer animId) {
+        animeService.subscribeUser(userId, animeName, animId);
     }
 }

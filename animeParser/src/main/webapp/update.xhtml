@@ -19,7 +19,7 @@
                     <f:ajax render="pggg" />
                 </h:selectOneMenu>
 
-                <h:commandButton value="Просмотрено" action="#" />
+                <h:commandButton value="Просмотрено" action="#{updateBean.resetUpdate}" />
 
                 <h:panelGroup id="pggg" layout="block">
                     <h:dataTable id="pg" columns="5" border="2" value="#{updateBean.updatesAnime}" var="anime" bgcolor="#B2BECD" rendered="#{updateBean.selected eq 'anime'}">
@@ -51,7 +51,7 @@
                             <f:facet name="header">
                                 <h:outputText value="Подписка" />
                             </f:facet>
-                            <h:commandLink value="#{message.Subscribe}" action="#{updateBean.subscribeOnAnime(anime.name)}"/>
+                            <h:commandLink value="#{message.Subscribe}" action="#{updateBean.subscribeOnAnime(anime.name, anime.id)}"/>
                         </h:column>
                     </h:dataTable>
 

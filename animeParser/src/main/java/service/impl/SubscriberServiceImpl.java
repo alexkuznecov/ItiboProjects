@@ -30,4 +30,9 @@ public class SubscriberServiceImpl {
     public List<Film> getUsersSubscribedFilmByUserIdIfUpdated(Integer id) {
         return subscriberService.getUsersSubscribedFilmByUserIdIfUpdated(id);
     }
+
+    public void updateReadedInfo(Integer id) {
+        subscriberService.updateReadedAnime(id);
+        subscriberService.updateReadedFilm(id);
+    }
 }

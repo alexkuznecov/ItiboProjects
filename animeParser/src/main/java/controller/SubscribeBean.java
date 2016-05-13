@@ -75,6 +75,10 @@ public class SubscribeBean {
         subscribedFilms = subscriberService.getUsersSubscribedFilmByUserIdIfUpdated(authBin.getUser().getId());
     }
 
+    public void resetUpdates() {
+        subscriberService.updateReadedInfo(authBin.getUser().getId());
+    }
+
     public List<Anime> getSubscribedAnime() {
         return subscribedAnime;
     }

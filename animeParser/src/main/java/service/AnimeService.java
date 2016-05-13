@@ -39,6 +39,6 @@ public interface AnimeService {
     @Select("select id from anime_users where user_id = #{userId} and anime_name = #{animeName}")
     Integer getRelationIdIfSubscribed(@Param(value = "userId") Integer userId, @Param(value = "animeName") String animeName);
 
-    @Insert("insert into anime_users(anime_name, user_id) values (#{animeName}, #{userId})")
-    void subscribeUser(@Param(value = "userId") Integer userId, @Param(value = "animeName") String animeName);
+    @Insert("insert into anime_users(anime_name, user_id, updateId) values (#{animeName}, #{userId}, #{animId})")
+    void subscribeUser(@Param(value = "userId") Integer userId, @Param(value = "animeName") String animeName, @Param(value = "animId") Integer animeId);
 }
