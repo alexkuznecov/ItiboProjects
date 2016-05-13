@@ -40,4 +40,9 @@ public class FilmServiceImpl implements FilmService {
     public void updateSearchFilmFound(@Param(value = "id") Integer id) {
         filmService.updateSearchFilmFound(id);
     }
+
+    @Override
+    public void updateSubscribedFilm(@Param(value = "filmId") Integer filmId) {
+
+    }
 }

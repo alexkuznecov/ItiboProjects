@@ -74,6 +74,13 @@ public class FilmUpdateStarter {
                         allUpdateFilm.get(i).getQuality().getName(), allUpdateFilm.get(i).getSound(),
                         allUpdateFilm.get(i).getSite());
             }
+            try {
+                Film film = filmService.getFilmByNameAndYear(allUpdateFilm.get(i).getName(), allUpdateFilm.get(i).getYear());
+                filmService.updateSubscribedFilm(film.getId());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
 
         LOG.warn("Film update finished");

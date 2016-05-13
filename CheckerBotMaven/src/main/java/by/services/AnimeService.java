@@ -18,4 +18,10 @@ public interface AnimeService {
     })
     @Select("select anime_name, anime_publicationDate, anime_newSeries from updatedAnime order by updatedAnime.anime_id desc limit 30")
     ArrayList<AnimeReportBean> getAnimeForReport();
+
+    @Select("select anime_id from updatedAnime where anime_name = #{name} and anime_publicationDate = #{date}")
+    Integer getAnimeIdByNameAndDate(@Param(value = "name") String name, @Param(value = "date") String date);
+
+    @Update("update anime_users set updated = 1, updatedId = #{animeId} where anime_name = #{animeName}")
+    void updateSubscribedAnime(@Param(value = "animeId") Integer animeId, @Param(value = "animeName") String animeName);
 }

@@ -38,4 +38,7 @@ public interface FilmService {
 
     @Update("update filmForSearch_user set found=1 where id = #{id}")
     void updateSearchFilmFound(@Param(value = "id") Integer id);
+
+    @Update("update film_users set updated = 1 where film_id = #{filmId}")
+    void updateSubscribedFilm(@Param(value = "filmId") Integer filmId);
 }

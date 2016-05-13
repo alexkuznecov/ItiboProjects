@@ -39,6 +39,14 @@ public class AnimeUpdateStarter {
                     animeVostParser.getNewAnime().get(i).getPublicationDate(), animeVostParser.getNewAnime().get(i).getSite(),
                     animeVostParser.getNewAnime().get(i).getNewSeries());
             LOG.info("Inserted" + animeVostParser.getNewAnime().get(i).getName());
+
+            try {
+                int id = animeService.getAnimeIdByNameAndDate(animeVostParser.getNewAnime().get(i).getName(),
+                        animeVostParser.getNewAnime().get(i).getPublicationDate());
+                animeService.updateSubscribedAnime(id, animeVostParser.getNewAnime().get(i).getName());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         if (!animeVostParser.getNewAnime().isEmpty()) {
